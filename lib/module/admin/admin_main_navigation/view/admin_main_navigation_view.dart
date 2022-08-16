@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fugi_movie_app/module/admin/admin_dashboard/view/admin_dashboard_view.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../controller/admin_main_navigation_controller.dart';
 
 import 'package:get/get.dart';
@@ -10,9 +12,49 @@ class AdminMainNavigationView extends StatelessWidget {
       init: AdminMainNavigationController(),
       builder: (controller) {
         controller.view = this;
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("AdminMainNavigation"),
+        return DefaultTabController(
+          length: 3,
+          initialIndex: controller.selectedIndex,
+          child: Scaffold(
+            body: IndexedStack(
+              index: controller.selectedIndex,
+              children: [
+                AdminDashboardView(),
+                Container(
+                  color: Colors.green[100],
+                ),
+                Container(
+                  color: Colors.blue[100],
+                ),
+              ],
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: controller.selectedIndex,
+              onTap: (index) {
+                controller.selectedIndex = index;
+                controller.update();
+              },
+              items: const [
+                BottomNavigationBarItem(
+                  label: "Dashboard",
+                  icon: Icon(
+                    MdiIcons.home,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: "Features",
+                  icon: Icon(
+                    MdiIcons.featureSearch,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: "Profile",
+                  icon: Icon(
+                    Icons.person,
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },

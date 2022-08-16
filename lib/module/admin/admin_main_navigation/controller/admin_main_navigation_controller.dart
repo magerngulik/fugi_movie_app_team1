@@ -3,6 +3,7 @@ import '../view/admin_main_navigation_view.dart';
 
 class AdminMainNavigationController extends GetxController {
   AdminMainNavigationView? view;
+  int selectedIndex = 0;
 
   @override
   void onInit() {
