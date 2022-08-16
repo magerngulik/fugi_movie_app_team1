@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = fugi_movie_app
+PRODUCT_NAME = Movie App Team 1;
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.fugiMovieApp
+PRODUCT_BUNDLE_IDENTIFIER = com.fugi.movie_app_team1;
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2022 com.example. All rights reserved.
