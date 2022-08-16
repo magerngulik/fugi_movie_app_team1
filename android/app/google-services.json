@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "446357896653",
+    "project_id": "fugi-movie-app-team-1",
+    "storage_bucket": "fugi-movie-app-team-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446357896653:android:f1dd132732451aacfad884",
+        "android_client_info": {
+          "package_name": "com.fugi.movie_app_team1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446357896653-7lrgc0u7ilrhnagi02gl8r2idsvt2cou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcdRjIz2ATaFL_OJbzSwuQ7Q9_d4zg8GE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446357896653-7lrgc0u7ilrhnagi02gl8r2idsvt2cou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

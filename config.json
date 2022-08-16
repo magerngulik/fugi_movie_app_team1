@@ -1,5 +1,6 @@
 {
     "modules": [
-
+        "admin/admin_main_navigation",
+        "admin/admin_dashboard"
     ]
 }
