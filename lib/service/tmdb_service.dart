@@ -6,13 +6,12 @@ class TMDBService {
   Future getLastestMovie({
     int page = 1,
   }) async {
-    var url =
-        "https://api.themoviedb.org/3/movie/latest?api_key=$apiKey&page=$page";
+    var url = "https://api.themoviedb.org/3/movie/latest?api_key=$apiKey";
     var response = await Dio().get(url);
     return response.data;
   }
 
-  Future getTrendingMovie({
+  Future getTrendingMovies({
     int page = 1,
   }) async {
     var url =
@@ -29,5 +28,9 @@ class TMDBService {
         "https://api.themoviedb.org/3/search/keyword?query=$query&page=1&api_key=$apiKey&page=$page";
     var response = await Dio().get(url);
     return response.data;
+  }
+
+  static String url(String url) {
+    return "https://image.tmdb.org/t/p/original/$url";
   }
 }

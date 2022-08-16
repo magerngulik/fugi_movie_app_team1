@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fugi_movie_app/module/admin/admin_dashboard/view/admin_dashboard_view.dart';
+import 'package:fugi_movie_app/module/admin/admin_movie_list/view/admin_movie_list_view.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../controller/admin_main_navigation_controller.dart';
 
@@ -20,9 +21,7 @@ class AdminMainNavigationView extends StatelessWidget {
               index: controller.selectedIndex,
               children: [
                 AdminDashboardView(),
-                Container(
-                  color: Colors.green[100],
-                ),
+                AdminMovieListView(),
                 Container(
                   color: Colors.blue[100],
                 ),
@@ -42,7 +41,7 @@ class AdminMainNavigationView extends StatelessWidget {
                   ),
                 ),
                 BottomNavigationBarItem(
-                  label: "Features",
+                  label: "Movies",
                   icon: Icon(
                     MdiIcons.featureSearch,
                   ),

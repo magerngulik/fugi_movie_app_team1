@@ -1,0 +1,67 @@
+{
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/wDyM1lIIgK4RIDAgr8iuZe9N1cf.jpg",
+            "id": 755566,
+            "title": "Day Shift",
+            "original_language": "en",
+            "original_title": "Day Shift",
+            "overview": "An LA vampire hunter has a week to come up with the cash to pay for his kid's tuition and braces. Trying to make a living these days just might kill him.",
+            "poster_path": "/bI7lGR5HuYlENlp11brKUAaPHuO.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                14,
+                27
+            ],
+            "popularity": 488.026,
+            "release_date": "2022-08-10",
+            "video": false,
+            "vote_average": 6.8,
+            "vote_count": 265
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/7ZO9yoEU2fAHKhmJWfAc2QIPWJg.jpg",
+            "id": 766507,
+            "title": "Prey",
+            "original_language": "en",
+            "original_title": "Prey",
+            "overview": "When danger threatens her camp, the fierce and highly skilled Comanche warrior Naru sets out to protect her people. But the prey she stalks turns out to be a highly evolved alien predator with a technically advanced arsenal.",
+            "poster_path": "/ujr5pztc1oitbe7ViMUOilFaJ7s.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                878,
+                27
+            ],
+            "popularity": 14930.029,
+            "release_date": "2022-08-02",
+            "video": false,
+            "vote_average": 8.14,
+            "vote_count": 2447
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/rLo9T9jEg67UZPq3midjLnTUYYi.jpg",
+            "id": 614934,
+            "title": "Elvis",
+            "original_language": "en",
+            "original_title": "Elvis",
+            "overview": "The life story of Elvis Presley as seen through the complicated relationship with his enigmatic manager, Colonel Tom Parker.",
+            "poster_path": "/qBOKWqAFbveZ4ryjJJwbie6tXkQ.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                10402,
+                18,
+                36
+            ],
+            "popularity": 1587.217,
+            "release_date": "2022-06-22",
+            "video": false,
+            "vote_average": 7.941,
+            "vote_count": 1005
+        }
+    ]
+}

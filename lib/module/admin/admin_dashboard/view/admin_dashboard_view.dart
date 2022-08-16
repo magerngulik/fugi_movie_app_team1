@@ -14,6 +14,45 @@ class AdminDashboardView extends StatelessWidget {
           appBar: AppBar(
             title: Text("AdminDashboard"),
           ),
+          bottomNavigationBar: SizedBox(
+            height: 90.0,
+            child: Center(
+              child: Obx(() {
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      if (controller.loading.value == true)
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Transform.scale(
+                              scale: 0.6,
+                              child: CircularProgressIndicator(
+                                color: Colors.red,
+                                strokeWidth: 1.0,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              "Loading...",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
+                );
+              }),
+            ),
+          ),
           body: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -41,6 +80,7 @@ class AdminDashboardView extends StatelessWidget {
                             ),
                             Text(
                               item["label"],
+                              textAlign: TextAlign.center,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 10.0,
