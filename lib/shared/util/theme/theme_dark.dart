@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fugi_movie_app/shared/util/theme/theme_constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 var darkTheme = ThemeData.dark().copyWith(
