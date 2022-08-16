@@ -10,7 +10,6 @@ class AdminMainNavigationView extends StatelessWidget {
       init: AdminMainNavigationController(),
       builder: (controller) {
         controller.view = this;
-
         return Scaffold(
           appBar: AppBar(
             title: Text("AdminMainNavigation"),
