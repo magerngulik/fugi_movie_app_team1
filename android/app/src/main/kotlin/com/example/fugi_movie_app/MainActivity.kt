@@ -1,4 +1,4 @@
-package com.example.fugi_movie_app
+package com.fugi.movie_app_team1
 
 import io.flutter.embedding.android.FlutterActivity
 
