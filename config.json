@@ -1,12 +1,12 @@
 {
-    "modules": [
-        "admin/admin_main_navigation",
-        "admin/admin_dashboard",
-        "admin/admin_movie_list",
-        "client/welcome",
-        "client/login",
-        "client/dashboard",
-        "client/movie_detail",
-        "client/video_player"
-    ]
+        "modules": [
+                "admin/admin_main_navigation",
+                "admin/admin_dashboard",
+                "admin/admin_movie_list",
+                "client/welcome",
+                "client/login",
+                "client/dashboard",
+                "client/movie_detail",
+                "client/video_player""admin/admin_video"
+        ]
 }
