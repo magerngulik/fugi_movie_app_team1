@@ -106,7 +106,7 @@ class AdminDashboardController extends GetxController {
     },
     {
       "icon": Icons.developer_board,
-      "label": "Movie Detail",
+      "label": "Video Player",
       "onTap": () {
         Get.to(VideoPlayerView());
       },
