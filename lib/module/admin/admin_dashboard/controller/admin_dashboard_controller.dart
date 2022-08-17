@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fugi_movie_app/module/admin/admin_video/view/admin_video_view.dart';
 import 'package:fugi_movie_app/module/client/dashboard/view/dashboard_view.dart';
 import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
 import 'package:fugi_movie_app/module/client/movie_detail/view/movie_detail_view.dart';
@@ -109,6 +110,13 @@ class AdminDashboardController extends GetxController {
       "label": "Video Player",
       "onTap": () {
         Get.to(VideoPlayerView());
+      },
+    },
+    {
+      "icon": Icons.developer_board,
+      "label": "(Nanti dipindahkan ya) Admin Video Player",
+      "onTap": () {
+        Get.to(AdminVideoView());
       },
     },
   ];
