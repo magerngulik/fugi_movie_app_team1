@@ -4,6 +4,7 @@ import 'package:fugi_movie_app/firebase_options.dart';
 import 'package:fugi_movie_app/module/admin/admin_main_navigation/view/admin_main_navigation_view.dart';
 import 'package:fugi_movie_app/shared/util/theme/theme_dark.dart';
 import 'package:get/get.dart';
+import './module/admin/admin_video/view/admin_video_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +19,7 @@ void main() async {
       transitionDuration: const Duration(milliseconds: 900),
       // theme: defaultTheme,
       theme: darkTheme,
-      home: AdminMainNavigationView(),
+      home: AdminVideoView(),
     ),
   );
 }

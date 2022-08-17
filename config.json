@@ -2,6 +2,7 @@
     "modules": [
         "admin/admin_main_navigation",
         "admin/admin_dashboard",
-        "admin/admin_movie_list"
+        "admin/admin_movie_list",
+        "admin/admin_video"
     ]
 }
