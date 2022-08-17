@@ -6,6 +6,15 @@ class DashboardController extends GetxController {
 
   String condition = "Now Showing";
 
+  final allMenuBottomNavigationBar = [
+    'Dashboard',
+    'Search',
+    'Ticket',
+    'Profile',
+  ];
+
+  final selectedBottomNavigationBar = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -24,5 +33,9 @@ class DashboardController extends GetxController {
   updateCondition() {
     condition = condition == "Now Showing" ? "Coming Soon" : "Now Showing";
     update();
+  }
+
+  void changeIndexBottomNavigationBar(int index) {
+    selectedBottomNavigationBar.value = index;
   }
 }
