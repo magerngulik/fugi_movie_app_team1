@@ -2,6 +2,11 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fugi_movie_app/module/client/dashboard/view/dashboard_view.dart';
+import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
+import 'package:fugi_movie_app/module/client/movie_detail/view/movie_detail_view.dart';
+import 'package:fugi_movie_app/module/client/video_player/view/video_player_view.dart';
+import 'package:fugi_movie_app/module/client/welcome/view/welcome_view.dart';
 import 'package:fugi_movie_app/service/tmdb_service.dart';
 import 'package:get/get.dart';
 import '../view/admin_dashboard_view.dart';
@@ -66,6 +71,44 @@ class AdminDashboardController extends GetxController {
       "onTap": () {
         AdminDashboardController controller = Get.find();
         controller.deleteMoviesInFirestore();
+      },
+    },
+  ];
+
+  List appMenus = [
+    {
+      "icon": Icons.developer_board,
+      "label": "Welcome",
+      "onTap": () {
+        Get.to(WelcomeView());
+      },
+    },
+    {
+      "icon": Icons.developer_board,
+      "label": "Login",
+      "onTap": () {
+        Get.to(LoginView());
+      },
+    },
+    {
+      "icon": Icons.developer_board,
+      "label": "Dashboard",
+      "onTap": () {
+        Get.to(DashboardView());
+      },
+    },
+    {
+      "icon": Icons.developer_board,
+      "label": "Movie Detail",
+      "onTap": () {
+        Get.to(MovieDetailView());
+      },
+    },
+    {
+      "icon": Icons.developer_board,
+      "label": "Movie Detail",
+      "onTap": () {
+        Get.to(VideoPlayerView());
       },
     },
   ];

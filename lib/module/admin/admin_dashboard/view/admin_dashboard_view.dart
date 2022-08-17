@@ -92,6 +92,42 @@ class AdminDashboardView extends StatelessWidget {
                     );
                   }),
                 ),
+                Divider(),
+                Wrap(
+                  children: List.generate(controller.appMenus.length, (index) {
+                    var item = controller.appMenus[index];
+                    return InkWell(
+                      onTap: () {
+                        item["onTap"]();
+                      },
+                      child: SizedBox(
+                        width: (MediaQuery.of(context).size.width - 40) / 4,
+                        height: (MediaQuery.of(context).size.width - 40) / 4,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              item["icon"],
+                              color: Colors.white,
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            Text(
+                              item["label"],
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 10.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+                ),
               ],
             ),
           ),
