@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fugi_movie_app/module/client/dashboard/widgets/bottom_navigation_bar_widget.dart';
+import '../../../../model/movie_model.dart';
 import '../controller/dashboard_controller.dart';
 
 import 'package:get/get.dart';
@@ -22,9 +25,10 @@ class DashboardView extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.hasError) return Text("Error");
                 if (!snapshot.hasData) return Text("No Data");
-                // final data = snapshot.data!;
+                final data = snapshot.data!;
 
-                // MovieModel itemMovie = MovieModel.fromJson(item);
+                List dataListMovieWithIndex =
+                    Iterable<int>.generate(data.docs.length).toList();
 
                 return Stack(
                   children: [
@@ -45,7 +49,7 @@ class DashboardView extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 32.0,
+                      top: Get.height * 0.02,
                       left: 0,
                       right: 0,
                       child: Row(
@@ -76,6 +80,40 @@ class DashboardView extends StatelessWidget {
                                   ),
                                 );
                               }),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                    ),
+                    Positioned(
+                      top: Get.height * 0.12,
+                      left: 0,
+                      right: 0,
+                      child: CarouselSlider(
+                        options: CarouselOptions(
+                          aspectRatio: 1.0,
+                          enlargeCenterPage: true,
+                        ),
+                        items: dataListMovieWithIndex.map(
+                          (index) {
+                            var item = (data.docs[index].data()
+                                as Map<String, dynamic>);
+
+                            MovieModel itemMovie = MovieModel.fromJson(item);
+                            return Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  24.0,
+                                ),
+                                image: DecorationImage(
+                                  image: CachedNetworkImageProvider(
+                                    itemMovie.posterPath != ''
+                                        ? 'https://image.tmdb.org/t/p/w500${itemMovie.posterPath}'
+                                        : 'https://i.ibb.co/S32HNjD/no-image.jpg',
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             );
                           },
                         ).toList(),
