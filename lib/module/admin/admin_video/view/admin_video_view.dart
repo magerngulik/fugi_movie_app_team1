@@ -166,7 +166,13 @@ class _AdminVideoViewState extends State<AdminVideoView> {
                                       )),
                                       Expanded(
                                         child: IconButton(
-                                            onPressed: () {},
+                                            onPressed: () async {
+                                              await _controller!
+                                                  .seekTo(Duration(seconds: 4));
+                                              await _controller!.play();
+                                              display = !display;
+                                              setState(() {});
+                                            },
                                             icon: FaIcon(FontAwesomeIcons
                                                 .arrowRotateRight),
                                             iconSize: 50),
