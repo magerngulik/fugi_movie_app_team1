@@ -13,7 +13,13 @@ class DashboardController extends GetxController {
     'Profile',
   ];
 
+  final tabBar = [
+    'Now Showing',
+    'Coming Soon',
+  ];
+
   final selectedBottomNavigationBar = 0.obs;
+  final selectedTabBar = 0.obs;
 
   @override
   void onInit() {
@@ -37,5 +43,9 @@ class DashboardController extends GetxController {
 
   void changeIndexBottomNavigationBar(int index) {
     selectedBottomNavigationBar.value = index;
+  }
+
+  void changeTabBar(int index) {
+    selectedTabBar.value = index;
   }
 }
