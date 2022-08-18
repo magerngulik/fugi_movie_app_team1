@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
+import 'package:flutter_screen_wake/flutter_screen_wake.dart';
 
 class MovieVideoPlayerView extends StatefulWidget {
   @override
@@ -29,9 +31,12 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
   }
 
   //untuk mengatur disply dari grub button
-  bool display = false;
+  bool display = true;
   //untuk mengatur icon lock
   bool lock = true;
+  double _brightness = 0;
+  bool toggle = false;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MovieVideoPlayerController>(
@@ -57,7 +62,7 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                       });
                     },
                     child: Container(
-                      color: Colors.red,
+                      color: Colors.grey,
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                       //inisialisasi value dari controller
@@ -69,10 +74,12 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                             )
                           : Container(
                               //yang tampil kalau video masih di load
-                              child: Text(
-                                "Loading Video",
-                                style: TextStyle(
-                                  fontSize: 20.0,
+                              child: Center(
+                                child: Text(
+                                  "Loading Video",
+                                  style: TextStyle(
+                                    fontSize: 50,
+                                  ),
                                 ),
                               ),
                             ),
@@ -143,6 +150,35 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                   child: Row(
                                     children: [
                                       Expanded(
+                                        child: Container(
+                                          width: 30,
+                                          height: 250,
+                                          child: Column(
+                                            children: [
+                                              Expanded(
+                                                child: SfSlider.vertical(
+                                                    value: _brightness,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        _brightness = value;
+                                                        FlutterScreenWake
+                                                            .setBrightness(
+                                                                _brightness);
+                                                      });
+                                                    }),
+                                              ),
+                                              Container(
+                                                height: 30,
+                                                child: Icon(
+                                                  Icons.brightness_5,
+                                                  color: Colors.white,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
                                           child: IconButton(
                                               onPressed: () {},
                                               icon: FaIcon(FontAwesomeIcons
@@ -176,6 +212,9 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                                 .arrowRotateRight),
                                             iconSize: 50),
                                       ),
+                                      Expanded(
+                                        child: Container(),
+                                      )
                                     ],
                                   ),
                                 ),

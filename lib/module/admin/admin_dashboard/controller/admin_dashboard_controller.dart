@@ -12,6 +12,7 @@ import 'package:fugi_movie_app/module/client/welcome/view/welcome_view.dart';
 import 'package:fugi_movie_app/service/tmdb_service.dart';
 import 'package:get/get.dart';
 import '../view/admin_dashboard_view.dart';
+import '../../../client/movie_video_player/view/movie_video_player_view.dart';
 
 class AdminDashboardController extends GetxController {
   AdminDashboardView? view;
@@ -109,15 +110,19 @@ class AdminDashboardController extends GetxController {
     {
       "icon": Icons.developer_board,
       "label": "Video Player",
-      "onTap": () {
-        Get.to(VideoPlayerView());
+      "onTap": () async {
+        await Get.to(AdminVideoView());
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ]);
       },
     },
     {
       "icon": Icons.developer_board,
-      "label": "(Nanti dipindahkan ya) Admin Video Player",
+      "label": "Movie Video Player",
       "onTap": () async {
-        await Get.to(AdminVideoView());
+        await Get.to(MovieVideoPlayerView());
         SystemChrome.setPreferredOrientations([
           DeviceOrientation.portraitUp,
           DeviceOrientation.portraitDown,
