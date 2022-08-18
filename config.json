@@ -7,8 +7,12 @@
                 "client/login",
                 "client/dashboard",
                 "client/movie_detail",
+
                 "client/video_player",
                 "admin/admin_video",
-                "client/movie_video_player"
+                "client/movie_video_player",
+
+                "client/video_player"
+
         ]
 }
