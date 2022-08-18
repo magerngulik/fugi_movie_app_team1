@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import '../controller/admin_video_controller.dart';
+import '../controller/movie_video_player_controller.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class AdminVideoView extends StatefulWidget {
+class MovieVideoPlayerView extends StatefulWidget {
   @override
-  State<AdminVideoView> createState() => _AdminVideoViewState();
+  State<MovieVideoPlayerView> createState() => _MovieVideoPlayerViewState();
 }
 
-class _AdminVideoViewState extends State<AdminVideoView> {
-  //controller bawaan video player
+class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
+//controller bawaan video player
   VideoPlayerController? _controller;
   @override
   void initState() {
@@ -26,18 +26,16 @@ class _AdminVideoViewState extends State<AdminVideoView> {
       ..initialize().then((_) {
         setState(() {});
       });
-    _controller!.play();
   }
 
   //untuk mengatur disply dari grub button
   bool display = false;
   //untuk mengatur icon lock
   bool lock = true;
-
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AdminVideoController>(
-      init: AdminVideoController(),
+    return GetBuilder<MovieVideoPlayerController>(
+      init: MovieVideoPlayerController(),
       builder: (controller) {
         controller.view = widget;
 
@@ -103,9 +101,7 @@ class _AdminVideoViewState extends State<AdminVideoView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     IconButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
+                                        onPressed: () {},
                                         icon: Icon(
                                           Icons.arrow_back,
                                           color: Colors.white,
