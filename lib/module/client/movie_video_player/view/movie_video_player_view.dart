@@ -15,6 +15,9 @@ class MovieVideoPlayerView extends StatefulWidget {
 class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
 //controller bawaan video player
   VideoPlayerController? _controller;
+  List videoList = ['butterfly.mp4', 'bee.mp4'];
+  int index = 0;
+
   @override
   void initState() {
     super.initState();
@@ -24,14 +27,15 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
       DeviceOrientation.landscapeRight,
     ]);
     _controller = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4')
+        'https://flutter.github.io/assets-for-api-docs/assets/videos/${videoList[index]}')
       ..initialize().then((_) {
         setState(() {});
       });
+    _controller!.play();
   }
 
   //untuk mengatur disply dari grub button
-  bool display = true;
+  bool display = false;
   //untuk mengatur icon lock
   bool lock = true;
   double _brightness = 0;
@@ -108,7 +112,9 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
                                         icon: Icon(
                                           Icons.arrow_back,
                                           color: Colors.white,
@@ -302,21 +308,30 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                         ],
                                       ),
                                     ),
-                                    Container(
-                                      width: 150,
-                                      child: Row(
-                                        children: const [
-                                          Icon(
-                                            Icons.skip_next,
-                                            color: Colors.white,
-                                          ),
-                                          Text(
-                                            "Next Episode",
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.white),
-                                          ),
-                                        ],
+                                    InkWell(
+                                      onTap: () {
+                                        if (index <= 1) {
+                                          setState(() {
+                                            index += 1;
+                                          });
+                                        }
+                                      },
+                                      child: Container(
+                                        width: 150,
+                                        child: Row(
+                                          children: const [
+                                            Icon(
+                                              Icons.skip_next,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              "Next Episode",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
