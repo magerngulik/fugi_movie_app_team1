@@ -20,6 +20,7 @@ class DashboardController extends GetxController {
 
   final selectedBottomNavigationBar = 0.obs;
   final selectedTabBar = 0.obs;
+  final currentCarouselSlider = 0.obs;
 
   @override
   void onInit() {
@@ -34,11 +35,6 @@ class DashboardController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-  }
-
-  updateCondition() {
-    condition = condition == "Now Showing" ? "Coming Soon" : "Now Showing";
-    update();
   }
 
   void changeIndexBottomNavigationBar(int index) {
