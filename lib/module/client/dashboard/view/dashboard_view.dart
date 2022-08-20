@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,6 +13,8 @@ import 'package:get/get.dart';
 class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final CarouselController carouselController = CarouselController();
+
     return GetBuilder<DashboardController>(
       init: DashboardController(),
       builder: (controller) {
@@ -30,24 +34,57 @@ class DashboardView extends StatelessWidget {
                 List dataListMovieWithIndex =
                     Iterable<int>.generate(data.docs.length).toList();
 
+                MovieModel dataMovie = MovieModel.fromJson(
+                    data.docs[controller.currentCarouselSlider.value].data()
+                        as Map<String, dynamic>);
+
                 return Stack(
+                  alignment: Alignment.center,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          stops: [
-                            Get.height * 0.00001,
-                            Get.height * 0.0005,
-                          ],
-                          colors: const [
-                            Color(0xff58534b),
-                            Colors.white,
+                    /// Background
+                    Column(
+                      children: [
+                        Stack(
+                          children: [
+                            AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: Image.network(
+                                'https://image.tmdb.org/t/p/w500${dataMovie.posterPath}',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Positioned.fill(
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(
+                                  sigmaX: 10,
+                                  sigmaY: 10,
+                                ),
+                                child: Container(
+                                  color: Colors.white.withOpacity(0.1),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
-                      ),
+                        Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              stops: [
+                                Get.height * 0.2,
+                                Get.height * 0.5,
+                              ],
+                              colors: const [
+                                Color(0xff58534b),
+                                Colors.white,
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                    /// TabBar View [Not Showing, Coming Soon]
                     Positioned(
                       top: Get.height * 0.02,
                       left: 0,
@@ -85,14 +122,21 @@ class DashboardView extends StatelessWidget {
                         ).toList(),
                       ),
                     ),
+                    /// Carousel Poster
                     Positioned(
                       top: Get.height * 0.12,
                       left: 0,
                       right: 0,
                       child: CarouselSlider(
+                        carouselController: carouselController,
                         options: CarouselOptions(
+                          height: Get.height * 0.5,
                           aspectRatio: 1.0,
                           enlargeCenterPage: true,
+                          onPageChanged: (index, _) {
+                            controller.currentCarouselSlider.value = index;
+                            controller.update();
+                          },
                         ),
                         items: dataListMovieWithIndex.map(
                           (index) {
@@ -119,10 +163,100 @@ class DashboardView extends StatelessWidget {
                         ).toList(),
                       ),
                     ),
+                    /// Data Movie
+                    Positioned(
+                      top: Get.height * 0.63,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(4.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            /// Time Movie
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 2.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Icon(
+                                    Icons.timelapse_outlined,
+                                    color: Color(0xffBFBFBF),
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    '2h 23m',
+                                    style: TextStyle(
+                                      color: Color(0xff6C6C6C),
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            /// Original Title
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 2.0),
+                              child: Text(
+                                (dataMovie.originalTitle != null)
+                                    ? (dataMovie.originalTitle!.isNotEmpty)
+                                        ? dataMovie.originalTitle!
+                                        : 'No Title'
+                                    : '-',
+                                style: TextStyle(
+                                  color: Color(0xff000101),
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+
+                            /// List Genre
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 2.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: dataMovie.genreIds
+                                    .map<Widget>(
+                                      (e) => Container(
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 4.0),
+                                        padding: EdgeInsets.all(8.0),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          border: Border.all(
+                                            color: Color(0xffF1F1F1),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0,
+                                            vertical: 2,
+                                          ),
+                                          child: Text(e.toString()),
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 );
               },
             ),
+            /// BottomNavigationBar
             bottomNavigationBar: BottomAppBar(
               color: Colors.white,
               elevation: 0,
