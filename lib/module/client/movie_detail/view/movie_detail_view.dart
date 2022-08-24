@@ -1,27 +1,36 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:fugi_movie_app/model/movie_model.dart';
+import '../../movie_video_player/view/movie_video_player_view.dart';
 import '../controller/movie_detail_controller.dart';
 
 import 'package:get/get.dart';
 
 class MovieDetailView extends StatelessWidget {
+  final MovieModel movie;
+  const MovieDetailView({
+    required this.movie,
+  });
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MovieDetailController>(
-        init: MovieDetailController(),
-        builder: (controller) {
-          controller.view = this;
+      init: MovieDetailController(),
+      builder: (controller) {
+        controller.view = this;
 
-          return Scaffold(
-            body: Stack(
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Stack(
               children: [
                 Container(
                   height: MediaQuery.of(context).size.height * 0.8,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                        "https://tse3.mm.bing.net/th?id=OIP.WT8tQIdjO63hzvjJMlwnegHaK-&pid=Api&P=0",
+                        'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                        // "https://tse3.mm.bing.net/th?id=OIP.WT8tQIdjO63hzvjJMlwnegHaK-&pid=Api&P=0",
                       ),
                       fit: BoxFit.fill,
                     ),
@@ -33,13 +42,15 @@ class MovieDetailView extends StatelessWidget {
                       const SizedBox(
                         height: 30.0,
                       ),
-                      Container(
+                      SizedBox(
                         height: 50,
-                        child: Container(
+                        child: SizedBox(
                           height: 100.0,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
+                              const SizedBox(
+                                width: 30.0,
+                              ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -55,7 +66,8 @@ class MovieDetailView extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Container(
+                              Spacer(),
+                              SizedBox(
                                 height: 40,
                                 width: 100,
                                 child: Container(
@@ -81,16 +93,22 @@ class MovieDetailView extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              const SizedBox(
+                                width: 30.0,
+                              ),
                             ],
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         height: 300,
-                        child: Icon(
-                          Icons.play_circle_rounded,
-                          size: 65,
-                          color: Colors.red.withOpacity(0.8),
+                        child: InkWell(
+                          onTap: () => Get.to(MovieVideoPlayerView()),
+                          child: Icon(
+                            Icons.play_circle_rounded,
+                            size: 65,
+                            color: Colors.red.withOpacity(0.8),
+                          ),
                         ),
                       ),
                       Container(
@@ -204,10 +222,12 @@ class MovieDetailView extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            // Text("${movie.cast}"),
+                            Text("Jumlah Casting: ${movie.cast.length}"),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   height: 80.0,
                                   child: Row(
                                     children: [
@@ -234,6 +254,9 @@ class MovieDetailView extends StatelessWidget {
                                           ],
                                         ),
                                       ),
+                                      const SizedBox(
+                                        width: 10.0,
+                                      ),
                                       Container(
                                         width: 90.0,
                                         height: 30,
@@ -248,7 +271,7 @@ class MovieDetailView extends StatelessWidget {
                                               MainAxisAlignment.center,
                                           children: const [
                                             Text(
-                                              "Advanture",
+                                              "Adventure",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: 14,
@@ -262,38 +285,41 @@ class MovieDetailView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Container(
-                              height: 50.0,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        'https://m.media-amazon.com/images/M/MV5BMTU0MjEyNzQyM15BMl5BanBnXkFtZTcwMTc4ODUxOQ@@._V1_UX214_CR0,0,214,317_AL_.jpg'),
-                                    radius: 40,
-                                  ),
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        'https://m.media-amazon.com/images/M/MV5BMTcyMTU5MzgxMF5BMl5BanBnXkFtZTYwMDI0NjI1._V1_UX214_CR0,0,214,317_AL_.jpg'),
-                                    radius: 40,
-                                  ),
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        'https://m.media-amazon.com/images/M/MV5BMTU0OTIzNTY1OV5BMl5BanBnXkFtZTgwNjk4MzE2MDI@._V1_UX214_CR0,0,214,317_AL_.jpg'),
-                                    radius: 40,
-                                  ),
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        'https://m.media-amazon.com/images/M/MV5BZmVlNGExOGMtYzA2Mi00MDFjLThiYzEtMTE3N2RkNDQwMzRkXkEyXkFqcGdeQXVyOTAyMDgxODQ@._V1_UY317_CR131,0,214,317_AL_.jpg'),
-                                    radius: 40,
-                                  ),
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        'https://m.media-amazon.com/images/M/MV5BYWM2ZDFkMDYtYzNhZC00ODhmLTgwMmUtYjUxNTAzYjM1ODBlXkEyXkFqcGdeQXVyMTI1NjU4MDIx._V1_UY317_CR20,0,214,317_AL_.jpg'),
-                                    radius: 40,
-                                  ),
-                                ],
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: SizedBox(
+                                height: 50.0,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          'https://m.media-amazon.com/images/M/MV5BMTU0MjEyNzQyM15BMl5BanBnXkFtZTcwMTc4ODUxOQ@@._V1_UX214_CR0,0,214,317_AL_.jpg'),
+                                      radius: 40,
+                                    ),
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          'https://m.media-amazon.com/images/M/MV5BMTcyMTU5MzgxMF5BMl5BanBnXkFtZTYwMDI0NjI1._V1_UX214_CR0,0,214,317_AL_.jpg'),
+                                      radius: 40,
+                                    ),
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          'https://m.media-amazon.com/images/M/MV5BMTU0OTIzNTY1OV5BMl5BanBnXkFtZTgwNjk4MzE2MDI@._V1_UX214_CR0,0,214,317_AL_.jpg'),
+                                      radius: 40,
+                                    ),
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          'https://m.media-amazon.com/images/M/MV5BZmVlNGExOGMtYzA2Mi00MDFjLThiYzEtMTE3N2RkNDQwMzRkXkEyXkFqcGdeQXVyOTAyMDgxODQ@._V1_UY317_CR131,0,214,317_AL_.jpg'),
+                                      radius: 40,
+                                    ),
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          'https://m.media-amazon.com/images/M/MV5BYWM2ZDFkMDYtYzNhZC00ODhmLTgwMmUtYjUxNTAzYjM1ODBlXkEyXkFqcGdeQXVyMTI1NjU4MDIx._V1_UY317_CR20,0,214,317_AL_.jpg'),
+                                      radius: 40,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(height: 5),
@@ -311,20 +337,6 @@ class MovieDetailView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 100.0,
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 0, horizontal: 90),
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffcbdad5),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -333,7 +345,9 @@ class MovieDetailView extends StatelessWidget {
                 ),
               ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

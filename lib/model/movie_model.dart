@@ -20,6 +20,7 @@ class MovieModel {
     required this.overview,
     required this.posterPath,
     required this.mediaType,
+    required this.cast,
     required this.genreIds,
     required this.popularity,
     required this.releaseDate,
@@ -38,6 +39,7 @@ class MovieModel {
   final String? posterPath;
   final String? mediaType;
   final List<int> genreIds;
+  final List cast;
   final double? popularity;
   final DateTime? releaseDate;
   final bool? video;
@@ -54,6 +56,7 @@ class MovieModel {
         overview: json["overview"],
         posterPath: json["poster_path"],
         mediaType: json["media_type"],
+        cast: json["cast"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         popularity: json["popularity"].toDouble(),
         releaseDate: json["release_date"] == null

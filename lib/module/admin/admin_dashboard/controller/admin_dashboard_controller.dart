@@ -4,10 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fugi_movie_app/module/admin/admin_video/view/admin_video_view.dart';
+import 'package:fugi_movie_app/module/client/booking_detail/view/booking_detail_view.dart';
 import 'package:fugi_movie_app/module/client/dashboard/view/dashboard_view.dart';
 import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
-import 'package:fugi_movie_app/module/client/movie_detail/view/movie_detail_view.dart';
-import 'package:fugi_movie_app/module/client/video_player/view/video_player_view.dart';
+import 'package:fugi_movie_app/module/client/movie_list/view/movie_list_view.dart';
 import 'package:fugi_movie_app/module/client/welcome/view/welcome_view.dart';
 import 'package:fugi_movie_app/service/tmdb_service.dart';
 import 'package:get/get.dart';
@@ -100,11 +100,33 @@ class AdminDashboardController extends GetxController {
         Get.to(DashboardView());
       },
     },
+    // {
+    //   "icon": Icons.developer_board,
+    //   "label": "Movie Detail",
+    //   "onTap": () {
+    //     Get.to(MovieDetailView());
+    //   },
+    // },
     {
       "icon": Icons.developer_board,
-      "label": "Movie Detail",
-      "onTap": () {
-        Get.to(MovieDetailView());
+      "label": "Movie List",
+      "onTap": () async {
+        await Get.to(MovieListView());
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ]);
+      },
+    },
+    {
+      "icon": Icons.developer_board,
+      "label": "Booking Detail",
+      "onTap": () async {
+        await Get.to(BookingDetailView());
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ]);
       },
     },
     {
@@ -201,6 +223,15 @@ class AdminDashboardController extends GetxController {
       List results = response["results"];
       for (var i = 0; i < results.length; i++) {
         var movie = results[i];
+
+        movie["cast"] = [
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+          "https://images.unsplash.com/photo-1508341591423-4347099e1f19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+          "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+          "https://images.unsplash.com/photo-1488716820095-cbe80883c496?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80",
+        ];
+
         await FirebaseFirestore.instance.collection("movies").add(movie);
       }
     }

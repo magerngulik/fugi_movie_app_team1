@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fugi_movie_app/module/client/dashboard/widgets/bottom_navigation_bar_widget.dart';
+import 'package:fugi_movie_app/module/client/movie_detail/view/movie_detail_view.dart';
 import '../../../../model/movie_model.dart';
 import '../controller/dashboard_controller.dart';
 
@@ -23,8 +24,10 @@ class DashboardView extends StatelessWidget {
           child: Scaffold(
             backgroundColor: Colors.white,
             body: StreamBuilder<QuerySnapshot>(
-              stream:
-                  FirebaseFirestore.instance.collection("movies").snapshots(),
+              stream: FirebaseFirestore.instance
+                  .collection("movies")
+                  .where("title", isNotEqualTo: "null")
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) return Text("Error");
                 if (!snapshot.hasData) return Text("No Data");
@@ -145,18 +148,23 @@ class DashboardView extends StatelessWidget {
                                 as Map<String, dynamic>);
 
                             MovieModel itemMovie = MovieModel.fromJson(item);
-                            return Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  24.0,
-                                ),
-                                image: DecorationImage(
-                                  image: CachedNetworkImageProvider(
-                                    itemMovie.posterPath != ''
-                                        ? 'https://image.tmdb.org/t/p/w500${itemMovie.posterPath}'
-                                        : 'https://i.ibb.co/S32HNjD/no-image.jpg',
+                            return InkWell(
+                              onTap: () => Get.to(MovieDetailView(
+                                movie: itemMovie,
+                              )),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    24.0,
                                   ),
-                                  fit: BoxFit.cover,
+                                  image: DecorationImage(
+                                    image: CachedNetworkImageProvider(
+                                      itemMovie.posterPath != ''
+                                          ? 'https://image.tmdb.org/t/p/w500${itemMovie.posterPath}'
+                                          : 'https://i.ibb.co/S32HNjD/no-image.jpg',
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             );
@@ -203,14 +211,17 @@ class DashboardView extends StatelessWidget {
 
                             /// Original Title
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 2.0),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 2.0,
+                                horizontal: 20.0,
+                              ),
                               child: Text(
-                                (dataMovie.originalTitle != null)
-                                    ? (dataMovie.originalTitle!.isNotEmpty)
-                                        ? dataMovie.originalTitle!
+                                (dataMovie.title != null)
+                                    ? (dataMovie.title!.isNotEmpty)
+                                        ? dataMovie.title!
                                         : 'No Title'
                                     : '-',
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Color(0xff000101),
                                   fontSize: 24.0,
