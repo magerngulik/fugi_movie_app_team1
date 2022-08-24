@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -84,6 +83,7 @@ class DashboardView extends StatelessWidget {
                         ),
                       ],
                     ),
+
                     /// TabBar View [Not Showing, Coming Soon]
                     Positioned(
                       top: Get.height * 0.02,
@@ -122,6 +122,7 @@ class DashboardView extends StatelessWidget {
                         ).toList(),
                       ),
                     ),
+
                     /// Carousel Poster
                     Positioned(
                       top: Get.height * 0.12,
@@ -163,6 +164,7 @@ class DashboardView extends StatelessWidget {
                         ).toList(),
                       ),
                     ),
+
                     /// Data Movie
                     Positioned(
                       top: Get.height * 0.63,
@@ -256,6 +258,7 @@ class DashboardView extends StatelessWidget {
                 );
               },
             ),
+
             /// BottomNavigationBar
             bottomNavigationBar: BottomAppBar(
               color: Colors.white,

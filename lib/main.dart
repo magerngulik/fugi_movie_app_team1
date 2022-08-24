@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fugi_movie_app/firebase_options.dart';
 import 'package:fugi_movie_app/module/admin/admin_main_navigation/view/admin_main_navigation_view.dart';
 import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
@@ -11,6 +12,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   runApp(
     GetMaterialApp(

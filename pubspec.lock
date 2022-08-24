@@ -168,7 +168,7 @@ packages:
       name: file
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.2"
+    version: "6.1.4"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -244,7 +244,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-<<<<<<< HEAD
   flutter_screen_wake:
     dependency: "direct main"
     description:
@@ -252,7 +251,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-=======
   flutter_svg:
     dependency: "direct main"
     description:
@@ -260,7 +258,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.4"
->>>>>>> 32386e61eb34c5e43c7f62986bc97ca084995330
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -542,22 +539,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-<<<<<<< HEAD
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.2.44"
+    version: "20.2.45"
   syncfusion_flutter_sliders:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_sliders
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.2.44"
-=======
+    version: "20.2.45"
   synchronized:
     dependency: transitive
     description:
@@ -565,7 +560,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0+2"
->>>>>>> 32386e61eb34c5e43c7f62986bc97ca084995330
   term_glyph:
     dependency: transitive
     description:
@@ -607,7 +601,7 @@ packages:
       name: video_player
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.4.6"
+    version: "2.4.7"
   video_player_android:
     dependency: transitive
     description:
