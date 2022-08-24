@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fugi_movie_app/module/admin/admin_video/view/admin_video_view.dart';
 import 'package:fugi_movie_app/module/client/booking_detail/view/booking_detail_view.dart';
+import 'package:fugi_movie_app/module/client/booking_list/view/booking_list_view.dart';
 import 'package:fugi_movie_app/module/client/dashboard/view/dashboard_view.dart';
 import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
 import 'package:fugi_movie_app/module/client/movie_list/view/movie_list_view.dart';
@@ -123,6 +124,17 @@ class AdminDashboardController extends GetxController {
       "label": "Booking Detail",
       "onTap": () async {
         await Get.to(BookingDetailView());
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ]);
+      },
+    },
+    {
+      "icon": Icons.developer_board,
+      "label": "Booking List",
+      "onTap": () async {
+        await Get.to(BookingListView());
         SystemChrome.setPreferredOrientations([
           DeviceOrientation.portraitUp,
           DeviceOrientation.portraitDown,
