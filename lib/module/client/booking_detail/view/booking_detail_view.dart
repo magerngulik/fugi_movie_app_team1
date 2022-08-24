@@ -32,6 +32,8 @@ class BookingDetailView extends StatelessWidget {
                         child: Container(
                           height: 30.0,
                           width: 30.0,
+                          margin: EdgeInsets.only(
+                              right: index % 4 == 0 ? 0.0 : 10.0),
                           decoration: BoxDecoration(
                             color: Colors.red[200],
                             borderRadius: const BorderRadius.all(
