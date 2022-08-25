@@ -22,6 +22,12 @@ class MovieDetailView extends StatelessWidget {
       builder: (controller) {
         controller.view = this;
 
+// TODO: Mas Syamsul Maarif
+// Ambil data movie-nya dari variabel ini gan:
+// movie
+// contoh:
+// movie.title
+
         return Scaffold(
           body: Stack(
             children: [
