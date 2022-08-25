@@ -13,6 +13,7 @@
                 "client/movie_video_player",
                 "client/video_player",
                 "client/booking_detail",
-                "client/booking_list"
+                "client/booking_list",
+                "client/profile"
         ]
 }
