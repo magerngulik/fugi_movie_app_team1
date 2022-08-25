@@ -216,11 +216,7 @@ class DashboardView extends StatelessWidget {
                                 horizontal: 20.0,
                               ),
                               child: Text(
-                                (dataMovie.title != null)
-                                    ? (dataMovie.title!.isNotEmpty)
-                                        ? dataMovie.title!
-                                        : 'No Title'
-                                    : '-',
+                                (dataMovie.title ?? "No Title"),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Color(0xff000101),
