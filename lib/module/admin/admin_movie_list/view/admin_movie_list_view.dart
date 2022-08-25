@@ -61,6 +61,7 @@ class AdminMovieListView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
+                                Text("${item["genre_ids"]}"),
                                 Text(
                                   "${item["original_title"]}",
                                   style: const TextStyle(
