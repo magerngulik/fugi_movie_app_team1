@@ -15,8 +15,11 @@ class MovieVideoPlayerView extends StatefulWidget {
 class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
 //controller bawaan video player
   VideoPlayerController? _controller;
-  List videoList = ['butterfly.mp4', 'bee.mp4'];
+  // List videoList = ['butterfly.mp4', 'bee.mp4'];
   int index = 0;
+
+  final String asset =
+      "https://github.com/denyocrworld/test_upload_video/raw/main/video.mp4";
 
   @override
   void initState() {
@@ -26,12 +29,22 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    _controller = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/${videoList[index]}')
+    _controller = VideoPlayerController.network(asset)
+      ..addListener(() {
+        setState(() {});
+      })
+      ..setLooping(true)
       ..initialize().then((_) {
         setState(() {});
       });
     _controller!.play();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller!.dispose();
+    super.dispose();
   }
 
   //untuk mengatur disply dari grub button
@@ -156,7 +169,7 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 30,
                                           height: 250,
                                           child: Column(
@@ -173,7 +186,7 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                                       });
                                                     }),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 height: 30,
                                                 child: Icon(
                                                   Icons.brightness_5,
@@ -225,12 +238,12 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                   ),
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 height: 100.0,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 150,
                                       child: Row(
                                         children: const [
@@ -254,7 +267,7 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                           lock = !lock;
                                         });
                                       },
-                                      child: Container(
+                                      child: SizedBox(
                                         width: 150,
                                         child: Row(
                                           children: [
@@ -274,7 +287,7 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                         ),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: 150,
                                       child: Row(
                                         children: const [
@@ -291,7 +304,7 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                         ],
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: 150,
                                       child: Row(
                                         children: const [
@@ -316,7 +329,7 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                           });
                                         }
                                       },
-                                      child: Container(
+                                      child: SizedBox(
                                         width: 150,
                                         child: Row(
                                           children: const [
