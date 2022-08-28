@@ -38,7 +38,7 @@ class MovieModel {
   final String? overview;
   final String? posterPath;
   final String? mediaType;
-  final List<int> genreIds;
+  final List<String> genreIds;
   final List cast;
   final double? popularity;
   final DateTime? releaseDate;
@@ -57,7 +57,7 @@ class MovieModel {
         posterPath: json["poster_path"],
         mediaType: json["media_type"],
         cast: json["cast"],
-        genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
+        genreIds: List<String>.from(json["genre_ids"].map((x) => x)),
         popularity: json["popularity"].toDouble(),
         releaseDate: json["release_date"] == null
             ? DateTime.now()

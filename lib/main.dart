@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fugi_movie_app/firebase_options.dart';
 import 'package:fugi_movie_app/module/admin/admin_main_navigation/view/admin_main_navigation_view.dart';
-import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
 import 'package:fugi_movie_app/shared/util/theme/theme_dark.dart';
 import 'package:get/get.dart';
 
@@ -25,6 +24,7 @@ void main() async {
       transitionDuration: const Duration(milliseconds: 900),
       // theme: defaultTheme,
       theme: darkTheme,
+
       home: AdminMainNavigationView(),
       // home: LoginView(),
     ),
