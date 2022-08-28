@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fugi_movie_app/module/client/dashboard/controller/dashboard_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../../../model/movie_model.dart';
@@ -13,6 +14,7 @@ class MovieListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dashboardC = Get.find<DashboardController>();
     return GetBuilder<MovieListController>(
       init: MovieListController(),
       builder: (controller) {
@@ -23,6 +25,12 @@ class MovieListView extends StatelessWidget {
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.black),
             backgroundColor: Colors.white,
+            leading: IconButton(
+              onPressed: () {
+                dashboardC.selectedBottomNavigationBar(0);
+              },
+              icon: Icon(Icons.arrow_back),
+            ),
             title: Center(
               child: Text(
                 "MOVIE",
