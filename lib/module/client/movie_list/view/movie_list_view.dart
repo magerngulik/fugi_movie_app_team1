@@ -219,8 +219,7 @@ class MovieListView extends StatelessWidget {
                                           Row(
                                             children: [
                                               Wrap(
-                                                direction: Axis.horizontal,
-                                                children: dataMovie.genreIds
+                                                children: dataMovie.genre
                                                     .map<Widget>(
                                                       (e) => Padding(
                                                         padding:
