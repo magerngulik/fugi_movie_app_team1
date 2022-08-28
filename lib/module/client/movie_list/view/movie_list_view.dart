@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../../../model/movie_model.dart';
 import '../../movie_detail/view/movie_detail_view.dart';
@@ -23,10 +24,10 @@ class MovieListView extends StatelessWidget {
             iconTheme: IconThemeData(color: Colors.black),
             backgroundColor: Colors.white,
             title: Center(
-              child: const Text(
+              child: Text(
                 "MOVIE",
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.bold, color: Colors.black),
               ),
             ),
             actions: const [
@@ -263,6 +264,8 @@ class MovieListView extends StatelessWidget {
                                           height: 8.0,
                                         ),
                                         Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Icon(
                                               Icons.my_library_books_outlined,
@@ -276,20 +279,38 @@ class MovieListView extends StatelessWidget {
                                                     child: Wrap(
                                                       children: dataMovie.genre
                                                           .map<Widget>(
-                                                            (e) => Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                          .only(
-                                                                      left:
-                                                                          10.0),
-                                                              child: Text(
-                                                                e.toString(),
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        12),
-                                                              ),
-                                                            ),
-                                                          )
+                                                              (e) => Container(
+                                                                    margin: EdgeInsets
+                                                                        .symmetric(
+                                                                      horizontal:
+                                                                          4,
+                                                                    ),
+                                                                    padding:
+                                                                        EdgeInsets
+                                                                            .all(4),
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Colors
+                                                                          .orangeAccent,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              16),
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color: Color(
+                                                                            0xffF1F1F1),
+                                                                      ),
+                                                                    ),
+                                                                    child: Text(
+                                                                      e.toString(),
+                                                                      style: TextStyle(
+                                                                          color: Colors
+                                                                              .white,
+                                                                          fontSize:
+                                                                              10),
+                                                                    ),
+                                                                  ))
                                                           .toList(),
                                                     ),
                                                   ),
