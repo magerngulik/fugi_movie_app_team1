@@ -3,14 +3,15 @@ import '../view/booking_detail_view.dart';
 
 class BookingDetailController extends GetxController {
   BookingDetailView? view;
-  // List chairList = ["A1", "B2"];
-  List selectedChairs = [];
+  List selectedChairs = [].obs;
+  List chairList = [];
   DateTime? selectedDate;
   String? selectedTime;
 
   @override
   void onInit() {
     super.onInit();
+    addingChairList();
   }
 
   @override
@@ -29,22 +30,28 @@ class BookingDetailController extends GetxController {
     "13:00",
   ];
 
-  List chairList = [
-    "A1",
-    "A2",
-    "A3",
-    "A4",
-    "A5",
-    "A6",
-    "A7",
-    "A8",
-    "B1",
-    "B2",
-    "B3",
-    "B4",
-    "B5",
-    "B6",
-    "B7",
-    "B8",
-  ];
+  List chairs = ['A', 'B', 'C', 'D', 'E'];
+
+  List generateListSeat({
+    required int seat,
+    required String chair,
+  }) {
+    return [for (var i = 1; i <= seat; i++) '$chair$i'];
+  }
+
+  addingChairList() {
+    for (var element in chairs) {
+      generateListSeat(seat: 8, chair: element).forEach((element) {
+        chairList.add(element);
+      });
+    }
+  }
+
+  void changeSelectedChairs({required String data}) {
+    if (!selectedChairs.contains(data)) {
+      selectedChairs.add(data);
+    } else {
+      selectedChairs.remove(data);
+    }
+  }
 }

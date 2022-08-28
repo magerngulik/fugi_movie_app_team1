@@ -21,7 +21,7 @@ class MovieModel {
     required this.posterPath,
     required this.mediaType,
     required this.cast,
-    required this.genreIds,
+    required this.genre,
     required this.popularity,
     required this.releaseDate,
     required this.video,
@@ -38,7 +38,11 @@ class MovieModel {
   final String? overview;
   final String? posterPath;
   final String? mediaType;
+<<<<<<< HEAD
   final List<String> genreIds;
+=======
+  final List<String> genre;
+>>>>>>> 8b75cbc6cc513180246bf39a0d0a5e891984dda8
   final List cast;
   final double? popularity;
   final DateTime? releaseDate;
@@ -57,7 +61,11 @@ class MovieModel {
         posterPath: json["poster_path"],
         mediaType: json["media_type"],
         cast: json["cast"],
+<<<<<<< HEAD
         genreIds: List<String>.from(json["genre_ids"].map((x) => x)),
+=======
+        genre: List<String>.from(json["genre_ids"].map((x) => x)),
+>>>>>>> 8b75cbc6cc513180246bf39a0d0a5e891984dda8
         popularity: json["popularity"].toDouble(),
         releaseDate: json["release_date"] == null
             ? DateTime.now()
@@ -77,7 +85,7 @@ class MovieModel {
         "overview": overview,
         "poster_path": posterPath,
         "media_type": mediaType,
-        "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
+        "genre_ids": List<dynamic>.from(genre.map((x) => x)),
         "popularity": popularity,
         "release_date":
             "${releaseDate?.year.toString().padLeft(4, '0')}-${releaseDate?.month.toString().padLeft(2, '0')}-${releaseDate?.day.toString().padLeft(2, '0')}",
