@@ -1,17 +1,24 @@
+import 'dart:math';
+
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import '../view/booking_detail_view.dart';
 
 class BookingDetailController extends GetxController {
   BookingDetailView? view;
   List selectedChairs = [].obs;
+  List reservedSeats = [];
   List chairList = [];
-  DateTime? selectedDate;
-  String? selectedTime;
+  Rxn<DateTime> selectedDate = Rxn<DateTime>();
+  Rxn<String> selectedTime = Rxn<String>();
+  final totalPrice = 0.0.obs;
+  final priceTicket = 125000.0;
 
   @override
   void onInit() {
     super.onInit();
     addingChairList();
+    addingReservedSeats();
   }
 
   @override
@@ -26,11 +33,19 @@ class BookingDetailController extends GetxController {
 
   List time = [
     "11:00",
+    "11:30",
     "12:00",
-    "13:00",
+    "14:05",
+    "14:35",
+    "15:05",
+    "17:10",
+    "18:10",
+    "20:15",
+    "21:15",
   ];
 
   List chairs = ['A', 'B', 'C', 'D', 'E'];
+  List informationSelectSeats = ['Available', 'Selected', 'Reserved'];
 
   List generateListSeat({
     required int seat,
@@ -47,11 +62,31 @@ class BookingDetailController extends GetxController {
     }
   }
 
+  addingReservedSeats() {
+    for (var element in chairs) {
+      generateListSeat(seat: Random().nextInt(5) + 1, chair: element)
+          .forEach((element) {
+        reservedSeats.add(element);
+      });
+    }
+  }
+
   void changeSelectedChairs({required String data}) {
     if (!selectedChairs.contains(data)) {
-      selectedChairs.add(data);
+      if (!reservedSeats.contains(data)) {
+        selectedChairs.add(data);
+      } else {
+        Fluttertoast.showToast(
+          msg: 'The seat has been booked, please choose an available place',
+        );
+      }
     } else {
       selectedChairs.remove(data);
     }
+    changeTotalPrice();
+  }
+
+  changeTotalPrice() {
+    totalPrice.value = (selectedChairs.length * priceTicket).toDouble();
   }
 }
