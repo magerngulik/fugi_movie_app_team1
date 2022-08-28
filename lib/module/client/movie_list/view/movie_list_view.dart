@@ -25,12 +25,6 @@ class MovieListView extends StatelessWidget {
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.black),
             backgroundColor: Colors.white,
-            leading: IconButton(
-              onPressed: () {
-                dashboardC.selectedBottomNavigationBar(0);
-              },
-              icon: Icon(Icons.arrow_back),
-            ),
             title: Center(
               child: Text(
                 "MOVIE",
@@ -38,12 +32,6 @@ class MovieListView extends StatelessWidget {
                     fontWeight: FontWeight.bold, color: Colors.black),
               ),
             ),
-            actions: const [
-              SizedBox(
-                width: 50,
-                height: 50,
-              )
-            ],
           ),
           body: Padding(
             padding: const EdgeInsets.all(20.0),
