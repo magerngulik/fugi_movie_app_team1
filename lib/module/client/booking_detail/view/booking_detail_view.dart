@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fugi_movie_app/core/utils/time_extension.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../controller/booking_detail_controller.dart';
 import '../widget/list_chair_seats_widget.dart';
@@ -271,25 +273,31 @@ class BookingDetailView extends StatelessWidget {
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
+                              children: [
+                                const Text(
                                   'Total Price',
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 12.0,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 4,
                                 ),
-                                Text(
-                                  'Rp. 12000000',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0,
-                                  ),
-                                ),
+                                Obx(() {
+                                  return Text(
+                                    NumberFormat.currency(
+                                            locale: 'id',
+                                            symbol: 'Rp.',
+                                            decimalDigits: 0)
+                                        .format(controller.totalPrice.value),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16.0,
+                                    ),
+                                  );
+                                }),
                               ],
                             ),
                             SizedBox(
@@ -303,6 +311,13 @@ class BookingDetailView extends StatelessWidget {
                                     'selectDate: ${controller.selectedDate.toString()}');
                                 debugPrint(
                                     'selectTime: ${controller.selectedTime}');
+                                debugPrint(
+                                    'totalPrice: ${controller.totalPrice.value}');
+                                Fluttertoast.showToast(
+                                    backgroundColor: Colors.white,
+                                    textColor: Colors.black,
+                                    msg:
+                                        'selectSeats: ${controller.selectedChairs.toString()}\nselectDate: ${controller.selectedDate.toString()}\nselectTime: ${controller.selectedTime}\ntotalPrice: ${controller.totalPrice.value}');
                               },
                               style: ButtonStyle(
                                 padding: MaterialStateProperty.all<EdgeInsets>(

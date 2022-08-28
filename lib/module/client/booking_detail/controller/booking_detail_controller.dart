@@ -11,6 +11,8 @@ class BookingDetailController extends GetxController {
   List chairList = [];
   Rxn<DateTime> selectedDate = Rxn<DateTime>();
   Rxn<String> selectedTime = Rxn<String>();
+  final totalPrice = 0.0.obs;
+  final priceTicket = 125000.0;
 
   @override
   void onInit() {
@@ -81,5 +83,10 @@ class BookingDetailController extends GetxController {
     } else {
       selectedChairs.remove(data);
     }
+    changeTotalPrice();
+  }
+
+  changeTotalPrice() {
+    totalPrice.value = (selectedChairs.length * priceTicket).toDouble();
   }
 }
