@@ -1,8 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:fugi_movie_app/service/tmdb_service.dart';
 import 'package:intl/intl.dart';
 import '../../../../model/movie_model.dart';
+import '../../movie_detail/view/movie_detail_view.dart';
 import '../controller/movie_list_controller.dart';
 import 'package:get/get.dart';
 
@@ -117,180 +118,194 @@ class MovieListView extends StatelessWidget {
                           String formattedDate =
                               DateFormat.yMMMd().format(dataTime);
 
-                          return Container(
-                            margin: const EdgeInsets.only(bottom: 10.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Stack(
-                                  children: [
-                                    Container(
-                                      width: 120,
-                                      height: 180,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage(
-                                            TMDBService.url(
-                                                item["poster_path"]),
-                                          ),
-                                          fit: BoxFit.cover,
-                                        ),
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(16.0),
-                                        ),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: Container(
-                                        height: 60,
-                                        width: 50,
-                                        decoration: BoxDecoration(
-                                          gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: const [
-                                                Colors.orange,
-                                                Colors.red
-                                              ]),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(
-                                              16.0,
-                                            ),
-                                            bottomRight: Radius.circular(
-                                              16.0,
-                                            ),
-                                          ),
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              showRate,
-                                              style: TextStyle(
-                                                  fontSize: 23,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
-                                            ),
-                                            Text(
-                                              "FUGI",
-                                              style: TextStyle(
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 20.0,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                          return InkWell(
+                            onTap: () => Get.to(MovieDetailView(
+                              movie: dataMovie,
+                            )),
+                            child: Container(
+                              margin: const EdgeInsets.only(bottom: 10.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Stack(
                                     children: [
-                                      Text(
-                                        "${item["title"]}",
-                                        maxLines: 2,
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
+                                      Container(
+                                        width: 120,
+                                        height: 180,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: CachedNetworkImageProvider(
+                                                'https://image.tmdb.org/t/p/w500${item["poster_path"]}'),
+                                            fit: BoxFit.cover,
+                                          ),
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(16.0),
+                                          ),
                                         ),
                                       ),
-                                      const SizedBox(
-                                        height: 20.0,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.my_library_books_outlined,
-                                            color: Colors.black,
-                                            size: 20,
+                                      Positioned(
+                                        bottom: 0,
+                                        right: 0,
+                                        child: Container(
+                                          height: 60,
+                                          width: 50,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: const [
+                                                  Colors.orange,
+                                                  Colors.red
+                                                ]),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(
+                                                16.0,
+                                              ),
+                                              bottomRight: Radius.circular(
+                                                16.0,
+                                              ),
+                                            ),
                                           ),
-                                          Row(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
-                                              Wrap(
-                                                children: dataMovie.genre
-                                                    .map<Widget>(
-                                                      (e) => Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 10.0),
-                                                        child: Text(
-                                                          e.toString(),
-                                                          style: TextStyle(
-                                                              fontSize: 12),
-                                                        ),
-                                                      ),
-                                                    )
-                                                    .toList(),
+                                              Text(
+                                                showRate,
+                                                style: TextStyle(
+                                                    fontSize: 23,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white),
+                                              ),
+                                              Text(
+                                                "FUGI",
+                                                style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white),
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.date_range,
-                                            color: Colors.black,
-                                            size: 20,
-                                          ),
-                                          const SizedBox(
-                                            width: 10.0,
-                                          ),
-                                          Text(
-                                            formattedDate,
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 3,
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12.0,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      Row(
-                                        children: const [
-                                          Icon(
-                                            Icons.timer,
-                                            color: Colors.black,
-                                            size: 20,
-                                          ),
-                                          SizedBox(
-                                            width: 10.0,
-                                          ),
-                                          Text(
-                                            "120 Minutes",
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 3,
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12.0,
-                                            ),
-                                          ),
-                                        ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(
+                                    width: 20.0,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "${item["title"]}",
+                                          maxLines: 2,
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10.0,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.date_range,
+                                              color: Colors.black,
+                                              size: 20,
+                                            ),
+                                            const SizedBox(
+                                              width: 10.0,
+                                            ),
+                                            Text(
+                                              formattedDate,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 3,
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 12.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Icon(
+                                              Icons.timer,
+                                              color: Colors.black,
+                                              size: 20,
+                                            ),
+                                            SizedBox(
+                                              width: 10.0,
+                                            ),
+                                            Text(
+                                              "120 Minutes",
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 3,
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 12.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 8.0,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.my_library_books_outlined,
+                                              color: Colors.black,
+                                              size: 20,
+                                            ),
+                                            Expanded(
+                                              child: Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: Wrap(
+                                                      children: dataMovie.genre
+                                                          .map<Widget>(
+                                                            (e) => Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      left:
+                                                                          10.0),
+                                                              child: Text(
+                                                                e.toString(),
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        12),
+                                                              ),
+                                                            ),
+                                                          )
+                                                          .toList(),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
