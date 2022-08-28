@@ -31,8 +31,15 @@ class BookingDetailController extends GetxController {
 
   List time = [
     "11:00",
+    "11:30",
     "12:00",
-    "13:00",
+    "14:05",
+    "14:35",
+    "15:05",
+    "17:10",
+    "18:10",
+    "20:15",
+    "21:15",
   ];
 
   List chairs = ['A', 'B', 'C', 'D', 'E'];
