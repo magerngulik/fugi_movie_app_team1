@@ -214,23 +214,45 @@ class BookingDetailView extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             var data = controller.time[index];
-                            return Container(
-                              margin: EdgeInsets.symmetric(horizontal: 8.0),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: Color(0xff38353D),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  data,
-                                  style: TextStyle(
-                                    color: Colors.white,
+                            return Obx(() {
+                              return InkWell(
+                                onTap: () =>
+                                    controller.selectedTime.value = data,
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xff38353D),
+                                    borderRadius: BorderRadius.circular(4),
+                                    border:
+                                        (controller.selectedTime.value == null)
+                                            ? null
+                                            : (controller.selectedTime.value!
+                                                    .contains(data))
+                                                ? Border.all(
+                                                    width: 2,
+                                                    color: Color(0xfffe5524),
+                                                  )
+                                                : null,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      data,
+                                      style: TextStyle(
+                                        color: (controller.selectedTime.value ==
+                                                null)
+                                            ? Colors.white
+                                            : (controller.selectedTime.value!
+                                                    .contains(data))
+                                                ? Color(0xfffe5524)
+                                                : Colors.white,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
+                              );
+                            });
                           },
                         ),
                       ),
@@ -274,7 +296,14 @@ class BookingDetailView extends StatelessWidget {
                               width: 32,
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                debugPrint(
+                                    'selectSeats: ${controller.selectedChairs.toString()}');
+                                debugPrint(
+                                    'selectDate: ${controller.selectedDate.toString()}');
+                                debugPrint(
+                                    'selectTime: ${controller.selectedTime}');
+                              },
                               style: ButtonStyle(
                                 padding: MaterialStateProperty.all<EdgeInsets>(
                                   EdgeInsets.symmetric(

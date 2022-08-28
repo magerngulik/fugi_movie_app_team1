@@ -15,7 +15,7 @@ class ListChairSeatsWidget extends GetView<BookingDetailController> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         controller.changeSelectedChairs(data: data);
       },
