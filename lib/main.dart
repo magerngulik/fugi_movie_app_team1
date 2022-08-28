@@ -24,6 +24,7 @@ void main() async {
       transitionDuration: const Duration(milliseconds: 900),
       // theme: defaultTheme,
       theme: darkTheme,
+
       home: AdminMainNavigationView(),
       // home: LoginView(),
     ),
