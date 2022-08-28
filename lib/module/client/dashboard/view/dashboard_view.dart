@@ -181,6 +181,7 @@ class DashboardView extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(4.0),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             /// Time Movie
@@ -213,7 +214,7 @@ class DashboardView extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                 vertical: 2.0,
-                                horizontal: 20.0,
+                                horizontal: 16.0,
                               ),
                               child: Text(
                                 (dataMovie.title ?? "No Title"),
@@ -228,35 +229,40 @@ class DashboardView extends StatelessWidget {
 
                             /// List Genre
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 2.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: dataMovie.genreIds
-                                    .map<Widget>(
-                                      (e) => Container(
-                                        margin: EdgeInsets.symmetric(
-                                            horizontal: 4.0),
-                                        padding: EdgeInsets.all(8.0),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                          border: Border.all(
-                                            color: Color(0xffF1F1F1),
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 8.0,
-                                            vertical: 2,
-                                          ),
-                                          child: Text(e.toString()),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 2.0,
+                                horizontal: 16.0,
+                              ),
+                              child: SizedBox(
+                                height: 42,
+                                child: ListView.builder(
+                                  itemCount: dataMovie.genre.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    var data = dataMovie.genre[index];
+                                    return Container(
+                                      margin: EdgeInsets.symmetric(
+                                        horizontal: 4.0,
+                                      ),
+                                      padding: EdgeInsets.all(8.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(16),
+                                        border: Border.all(
+                                          color: Color(0xffF1F1F1),
                                         ),
                                       ),
-                                    )
-                                    .toList(),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 8.0,
+                                          vertical: 2,
+                                        ),
+                                        child: Text(data),
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
