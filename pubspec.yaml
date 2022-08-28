@@ -36,18 +36,19 @@ dependencies:
   get: ^4.6.5
   intl: ^0.17.0
   material_design_icons_flutter: ^5.0.6996
-  firebase_core: ^1.21.0
-  firebase_auth: ^3.6.4
-  cloud_firestore: ^3.4.5
+  firebase_core: ^1.21.1
+  firebase_auth: ^3.7.0
+  cloud_firestore: ^3.4.6
   google_fonts: ^3.0.1
   dio: ^4.0.6
-  video_player: ^2.4.6
+  video_player: ^2.4.7
   font_awesome_flutter: ^10.1.0
   flutter_screen_wake: ^1.0.2
-  syncfusion_flutter_sliders: ^20.2.44
+  syncfusion_flutter_sliders: ^20.2.45
   flutter_svg: ^1.1.4
   cached_network_image: ^3.2.1
   carousel_slider: ^4.1.1
+  fluttertoast: ^8.0.9
   
 dev_dependencies:
   flutter_test:

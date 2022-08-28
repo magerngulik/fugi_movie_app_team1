@@ -38,6 +38,8 @@ class BookingDetailView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   /// List Seats Chair
                   Wrap(
@@ -52,6 +54,45 @@ class BookingDetailView extends StatelessWidget {
                       );
                     }),
                   ),
+
+                  SizedBox(
+                    height: 24,
+                  ),
+
+                  /// Information List Seats Chair
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: controller.informationSelectSeats
+                        .map<Widget>(
+                          (data) => Padding(
+                            padding: const EdgeInsets.only(right: 16.0),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: data == 'Available'
+                                      ? Color(0xff363740)
+                                      : data == 'Selected'
+                                          ? Color(0xfffe5524)
+                                          : Colors.white,
+                                  radius: 4,
+                                ),
+                                SizedBox(
+                                  width: 4.0,
+                                ),
+                                Text(
+                                  data,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+
                   //body
                   SizedBox(
                     height: 100.0,

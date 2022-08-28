@@ -30,7 +30,9 @@ class ListChairSeatsWidget extends GetView<BookingDetailController> {
           decoration: BoxDecoration(
             color: controller.selectedChairs.contains(data)
                 ? Color(0xfffe5524)
-                : Colors.white,
+                : (controller.reservedSeats.contains(data))
+                    ? Colors.white
+                    : Color(0xff363740),
             borderRadius: const BorderRadius.all(
               Radius.circular(
                 6.0,
@@ -43,7 +45,9 @@ class ListChairSeatsWidget extends GetView<BookingDetailController> {
               style: TextStyle(
                 color: controller.selectedChairs.contains(data)
                     ? Colors.white
-                    : Colors.black,
+                    : controller.reservedSeats.contains(data)
+                        ? Colors.black
+                        : Colors.grey,
               ),
             ),
           ),

@@ -1,9 +1,13 @@
+import 'dart:math';
+
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import '../view/booking_detail_view.dart';
 
 class BookingDetailController extends GetxController {
   BookingDetailView? view;
   List selectedChairs = [].obs;
+  List reservedSeats = [];
   List chairList = [];
   DateTime? selectedDate;
   String? selectedTime;
@@ -12,6 +16,7 @@ class BookingDetailController extends GetxController {
   void onInit() {
     super.onInit();
     addingChairList();
+    addingReservedSeats();
   }
 
   @override
@@ -31,6 +36,7 @@ class BookingDetailController extends GetxController {
   ];
 
   List chairs = ['A', 'B', 'C', 'D', 'E'];
+  List informationSelectSeats = ['Available', 'Selected', 'Reserved'];
 
   List generateListSeat({
     required int seat,
@@ -47,9 +53,24 @@ class BookingDetailController extends GetxController {
     }
   }
 
+  addingReservedSeats() {
+    for (var element in chairs) {
+      generateListSeat(seat: Random().nextInt(5) + 1, chair: element)
+          .forEach((element) {
+        reservedSeats.add(element);
+      });
+    }
+  }
+
   void changeSelectedChairs({required String data}) {
     if (!selectedChairs.contains(data)) {
-      selectedChairs.add(data);
+      if (!reservedSeats.contains(data)) {
+        selectedChairs.add(data);
+      } else {
+        Fluttertoast.showToast(
+          msg: 'The seat has been booked, please choose an available place',
+        );
+      }
     } else {
       selectedChairs.remove(data);
     }
