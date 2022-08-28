@@ -130,45 +130,74 @@ class BookingDetailView extends StatelessWidget {
 
                       /// Select Date
                       SizedBox(
-                        height: 88,
+                        height: 64,
                         child: ListView.builder(
                           itemCount: 30,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             var day = DateTime.now().add(Duration(days: index));
 
-                            return InkWell(
-                              onTap: () {},
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 8.0),
-                                decoration: BoxDecoration(
-                                  color: Color(0xff38353D),
-                                  borderRadius: BorderRadius.circular(32),
-                                ),
-                                padding: const EdgeInsets.all(20.0),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        day.shortMonthName,
-                                        style: TextStyle(
-                                          color: Colors.white,
+                            return Obx(() {
+                              return InkWell(
+                                onTap: () =>
+                                    controller.selectedDate.value = day,
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                  decoration: BoxDecoration(
+                                    color:
+                                        (controller.selectedDate.value == null)
+                                            ? Color(0xff38353D)
+                                            : controller.selectedDate.value!
+                                                    .isAtSameMomentAs(day)
+                                                ? Color(0xfffe5524)
+                                                : Color(0xff38353D),
+                                    borderRadius: BorderRadius.circular(32),
+                                  ),
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          day.shortMonthName,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        "${day.day}",
-                                        style: TextStyle(
-                                          color: Colors.white,
+                                        SizedBox(
+                                          height: 8,
                                         ),
-                                      ),
-                                    ],
+                                        (controller.selectedDate.value == null)
+                                            ? Text(
+                                                "${day.day}",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              )
+                                            : (controller.selectedDate.value!
+                                                    .isAtSameMomentAs(day))
+                                                ? CircleAvatar(
+                                                    radius: 12,
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    child: Text(
+                                                      "${day.day}",
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Text(
+                                                    "${day.day}",
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
+                              );
+                            });
                           },
                         ),
                       ),
@@ -253,7 +282,7 @@ class BookingDetailView extends StatelessWidget {
                                 ),
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                  Color(0xffFFB43A),
+                                  Color(0xfffe5524),
                                 ),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
@@ -265,7 +294,7 @@ class BookingDetailView extends StatelessWidget {
                               child: const Text(
                                 'Book Ticket',
                                 style: TextStyle(
-                                  color: Color(0xff2B2C34),
+                                  color: Colors.white,
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                 ),

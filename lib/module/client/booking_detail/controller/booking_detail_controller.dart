@@ -9,8 +9,8 @@ class BookingDetailController extends GetxController {
   List selectedChairs = [].obs;
   List reservedSeats = [];
   List chairList = [];
-  DateTime? selectedDate;
-  String? selectedTime;
+  Rxn<DateTime> selectedDate = Rxn<DateTime>();
+  Rxn<String> selectedTime = Rxn<String>();
 
   @override
   void onInit() {
