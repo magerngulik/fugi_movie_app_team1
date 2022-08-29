@@ -30,7 +30,7 @@ class BookingListView extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/image/logo-fugi1.png'),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
               ),
@@ -61,6 +61,9 @@ class BookingListView extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return Column(
                       children: const [
+                        SizedBox(
+                          height: 10,
+                        ),
                         CartBooking(
                           url:
                               'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRHXV5at6mvLIF852fvIA5jeUi6bVYs8swuCPUCRWdRxWp0sr5Q',
