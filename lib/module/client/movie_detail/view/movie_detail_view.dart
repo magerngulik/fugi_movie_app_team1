@@ -22,12 +22,6 @@ class MovieDetailView extends StatelessWidget {
       builder: (controller) {
         controller.view = this;
 
-// TODO: Mas Syamsul Maarif
-// Ambil data movie-nya dari variabel ini gan:
-// movie
-// contoh:
-// movie.title
-
         return Scaffold(
           body: Stack(
             children: [
@@ -142,8 +136,29 @@ class MovieDetailView extends StatelessWidget {
                             Expanded(
                               child: Column(
                                 children: [
-                                  Text(
-                                    "",
+                                  Column(
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                          style: TextStyle(color: Colors.black),
+                                          children: [
+                                            TextSpan(
+                                              text: movie.popularity.toString(),
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            TextSpan(text: "10\n"),
+                                            TextSpan(
+                                              text: "IMDb",
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -212,7 +227,7 @@ class MovieDetailView extends StatelessWidget {
                             horizontal: 20.0,
                           ),
                           child: Text(
-                            "judul",
+                            (movie.title ?? "no title"),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color(0xff000101),
@@ -223,63 +238,51 @@ class MovieDetailView extends StatelessWidget {
                         ),
                         // Text("${movie.cast}"),
                         Text("Jumlah Casting: ${movie.cast.length}"),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 80.0,
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 75.0,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: const [
-                                        Text(
-                                          "fantasy",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize: 14,
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Expanded(
+                            child: Wrap(
+                              children: movie.genre
+                                  .map<Widget>((e) => Column(
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: 90.0,
+                                                height: 30,
+                                                margin: EdgeInsets.symmetric(
+                                                  horizontal: 8,
+                                                  vertical: 12,
+                                                ),
+                                                padding: EdgeInsets.all(4),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(16),
+                                                  border: Border.all(
+                                                    color: Color(0xffF1F1F1),
+                                                  ),
+                                                ),
+                                                child: Text(
+                                                  e.toString(),
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 14),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Container(
-                                    width: 90.0,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: const [
-                                        Text(
-                                          "Adventure",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                        ],
+                                      ))
+                                  .toList(),
                             ),
-                          ],
+                          ),
                         ),
+
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: SizedBox(
@@ -322,7 +325,7 @@ class MovieDetailView extends StatelessWidget {
                           margin: EdgeInsets.symmetric(
                               vertical: 20, horizontal: 50),
                           child: Text(
-                            "",
+                            (movie.overview ?? ""),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               height: 1.20,
