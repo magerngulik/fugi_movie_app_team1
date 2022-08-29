@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fugi_movie_app/module/admin/admin_video/view/admin_video_view.dart';
 import 'package:fugi_movie_app/module/client/booking_detail/view/booking_detail_view.dart';
-import 'package:fugi_movie_app/module/client/booking_list/view/booking_list_view.dart';
 import 'package:fugi_movie_app/module/client/dashboard/view/dashboard_view.dart';
 import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
 import 'package:fugi_movie_app/module/client/movie_list/view/movie_list_view.dart';
@@ -13,6 +12,7 @@ import 'package:fugi_movie_app/module/client/profile/view/profile_view.dart';
 import 'package:fugi_movie_app/module/client/welcome/view/welcome_view.dart';
 import 'package:fugi_movie_app/service/tmdb_service.dart';
 import 'package:get/get.dart';
+import '../../../client/booking_list/view/booking_list_view.dart';
 import '../view/admin_dashboard_view.dart';
 import '../../../client/movie_video_player/view/movie_video_player_view.dart';
 
@@ -102,6 +102,14 @@ class AdminDashboardController extends GetxController {
         Get.to(DashboardView());
       },
     },
+    {
+      "icon": Icons.developer_board,
+      "label": "Booking List",
+      "onTap": () {
+        Get.to(BookingListView());
+      },
+    },
+
     // {
     //   "icon": Icons.developer_board,
     //   "label": "Movie Detail",
@@ -131,17 +139,7 @@ class AdminDashboardController extends GetxController {
         ]);
       },
     },
-    {
-      "icon": Icons.developer_board,
-      "label": "Booking List",
-      "onTap": () async {
-        await Get.to(BookingListView());
-        SystemChrome.setPreferredOrientations([
-          DeviceOrientation.portraitUp,
-          DeviceOrientation.portraitDown,
-        ]);
-      },
-    },
+
     {
       "icon": Icons.developer_board,
       "label": "Profile",
