@@ -19,12 +19,15 @@ class ProfileView extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.grey[300],
           appBar: AppBar(
+            leading: Container(),
+            leadingWidth: 0.0,
             elevation: 0.0,
             backgroundColor: Colors.blueGrey[800],
             iconTheme: const IconThemeData(
               color: Colors.white,
             ),
             title: const Text("Profile"),
+            centerTitle: true,
             actions: [
               IconButton(
                 onPressed: () async {
@@ -132,6 +135,9 @@ class ProfileView extends StatelessWidget {
                           bottom: 0.0,
                         ),
                         child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           color: Colors.white,
                           child: Container(
                             padding: const EdgeInsets.all(20.0),

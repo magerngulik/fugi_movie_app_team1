@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../../../model/movie_model.dart';
 import '../../movie_detail/view/movie_detail_view.dart';
@@ -26,9 +25,12 @@ class MovieListView extends StatelessWidget {
             iconTheme: IconThemeData(color: Colors.black),
             backgroundColor: Colors.white,
             title: Text(
-              "MOVIE",
-              style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.bold, color: Colors.black),
+              "Movie",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
             ),
             centerTitle: true,
           ),

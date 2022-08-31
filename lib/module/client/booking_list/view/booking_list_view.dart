@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../controller/booking_list_controller.dart';
 
@@ -21,33 +20,25 @@ class BookingListView extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            leading: Container(),
+            leadingWidth: 0.0,
             backgroundColor: Colors.white,
             iconTheme: IconThemeData(color: Colors.black),
-            titleTextStyle: GoogleFonts.montserrat(
-                color: Colors.black, fontWeight: FontWeight.bold),
-            title: Center(
-              child: Container(
-                height: 45,
-                width: 120,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/image/logo-fugi1.png'),
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
-              ),
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
             ),
-            actions: const [
+            title: Text("Your Ticket"),
+            centerTitle: true,
+            actions: [
               Padding(
                 padding: EdgeInsets.only(right: 10),
                 child: Icon(
-                  Icons.notifications_outlined,
-                  color: Colors.black,
+                  Icons.tune,
+                  color: Colors.grey[600]!,
                   size: 35,
                 ),
-              ),
-              SizedBox(
-                height: 15.0,
               ),
             ],
           ),
