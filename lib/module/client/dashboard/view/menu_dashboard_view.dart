@@ -231,6 +231,7 @@ class MenuDashboardView extends GetView<DashboardController> {
                             horizontal: 16.0,
                           ),
                           child: Wrap(
+                            runSpacing: 10.0,
                             children:
                                 List.generate(dataMovie.genre.length, (index) {
                               var data = dataMovie.genre[index];
