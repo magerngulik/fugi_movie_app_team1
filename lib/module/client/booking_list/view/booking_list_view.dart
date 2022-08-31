@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import '../controller/booking_list_controller.dart';
 
 import 'package:get/get.dart';
@@ -49,38 +51,57 @@ class BookingListView extends StatelessWidget {
               ),
             ],
           ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(15),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: Colors.white,
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: const [
-                        SizedBox(
-                          height: 10,
-                        ),
-                        CartBooking(
-                          url:
-                              'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRHXV5at6mvLIF852fvIA5jeUi6bVYs8swuCPUCRWdRxWp0sr5Q',
-                          judul: 'THOR LOVE AND THUNDER',
-                          alamat: 'SKA XXI - CINEMA 21',
-                          tanggal: 'Sabtu, 09 Juli 2022',
-                          jmlTiket: "Tiket(1)",
-                          respon: 'Berhasil',
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                        )
-                      ],
-                    );
-                  },
+          body: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Expanded(
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("orders")
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) return const Text("Error");
+                      if (snapshot.data == null) return Container();
+                      if (snapshot.data!.docs.isEmpty) {
+                        return const Text("No Data");
+                      }
+
+                      final data = snapshot.data!;
+                      return ListView.builder(
+                        itemCount: data.docs.length,
+                        itemBuilder: (context, index) {
+                          var item = (data.docs[index].data() as Map);
+                          item["id"] = data.docs[index].id;
+
+                          var date = DateFormat("EEEE, d MMM y")
+                              .format(item["date"].toDate());
+
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              CartBooking(
+                                url:
+                                    "https://image.tmdb.org/t/p/w500${item["movie"]["photo"]}",
+                                judul: item["movie"]["movie_name"],
+                                alamat: item["cinema"],
+                                tanggal: date,
+                                jmlTiket: "Tiket (${item["chairs"].length})",
+                                respon: 'Berhasil',
+                              ),
+                              Divider(
+                                color: Colors.grey,
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         );

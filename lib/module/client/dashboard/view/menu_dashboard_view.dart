@@ -221,43 +221,78 @@ class MenuDashboardView extends GetView<DashboardController> {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
 
-                        /// List Genre
                         Padding(
                           padding: const EdgeInsets.symmetric(
                             vertical: 2.0,
                             horizontal: 16.0,
                           ),
-                          child: SizedBox(
-                            height: 42,
-                            child: ListView.builder(
-                              itemCount: dataMovie.genre.length,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) {
-                                var data = dataMovie.genre[index];
-                                return Container(
-                                  margin: EdgeInsets.symmetric(
-                                    horizontal: 4.0,
+                          child: Wrap(
+                            children:
+                                List.generate(dataMovie.genre.length, (index) {
+                              var data = dataMovie.genre[index];
+                              return Container(
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: 4.0,
+                                ),
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(
+                                    color: Colors.grey[400]!,
                                   ),
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    border: Border.all(
-                                      color: Color(0xffF1F1F1),
-                                    ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                    vertical: 2,
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0,
-                                      vertical: 2,
-                                    ),
-                                    child: Text(data),
-                                  ),
-                                );
-                              },
-                            ),
+                                  child: Text(data),
+                                ),
+                              );
+                            }),
                           ),
                         ),
+
+                        // /// List Genre
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(
+                        //     vertical: 2.0,
+                        //     horizontal: 16.0,
+                        //   ),
+                        //   child: SizedBox(
+                        //     height: 42,
+                        //     child: ListView.builder(
+                        //       itemCount: dataMovie.genre.length,
+                        //       scrollDirection: Axis.horizontal,
+                        //       itemBuilder: (context, index) {
+                        //         var data = dataMovie.genre[index];
+                        //         return Container(
+                        //           margin: EdgeInsets.symmetric(
+                        //             horizontal: 4.0,
+                        //           ),
+                        //           padding: EdgeInsets.all(8.0),
+                        //           decoration: BoxDecoration(
+                        //             borderRadius: BorderRadius.circular(16),
+                        //             border: Border.all(
+                        //               color: Color(0xffF1F1F1),
+                        //             ),
+                        //           ),
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.symmetric(
+                        //               horizontal: 8.0,
+                        //               vertical: 2,
+                        //             ),
+                        //             child: Text(data),
+                        //           ),
+                        //         );
+                        //       },
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

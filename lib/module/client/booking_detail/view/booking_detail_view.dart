@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fugi_movie_app/core/utils/time_extension.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
 import '../controller/booking_detail_controller.dart';
 import '../widget/list_chair_seats_widget.dart';
 
@@ -37,8 +35,24 @@ class BookingDetailView extends StatelessWidget {
             ),
           ),
           body: SingleChildScrollView(
+            controller: ScrollController(),
             child: Column(
               children: [
+                const SizedBox(
+                  height: 20.0,
+                ),
+
+                Image.network(
+                  "https://i.ibb.co/vhvzm4m/gambar.jpg",
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: 64.0,
+                  fit: BoxFit.fitWidth,
+                ),
+
+                const SizedBox(
+                  height: 30.0,
+                ),
+
                 /// List Seats Chair
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -102,254 +116,294 @@ class BookingDetailView extends StatelessWidget {
                 ),
 
                 /// Select Date and Time
-                Container(
-                  height: Get.height * 0.45,
-                  padding: EdgeInsets.only(
-                    top: 16.0,
+              ],
+            ),
+          ),
+          bottomNavigationBar: Container(
+            height: Get.height * 0.45,
+            padding: EdgeInsets.only(
+              top: 16.0,
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xff2B2C34),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(60),
+                topRight: Radius.circular(60),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 16.0,
+                ),
+
+                Text(
+                  'Select Date and Time',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
-                  decoration: BoxDecoration(
-                    color: Color(0xff2B2C34),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(32),
-                      topRight: Radius.circular(32),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Select Date and Time',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
+                ),
 
-                      SizedBox(
-                        height: 16,
-                      ),
+                SizedBox(
+                  height: 24,
+                ),
 
-                      /// Select Date
-                      SizedBox(
-                        height: 64,
-                        child: ListView.builder(
-                          itemCount: 30,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            var day = DateTime.now().add(Duration(days: index));
+                /// Select Date
+                SizedBox(
+                  height: 64,
+                  child: ListView.builder(
+                    itemCount: 30,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      var day = DateTime.now().add(Duration(days: index));
 
-                            return Obx(() {
-                              return InkWell(
-                                onTap: () =>
-                                    controller.selectedDate.value = day,
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
-                                  decoration: BoxDecoration(
-                                    color:
-                                        (controller.selectedDate.value == null)
-                                            ? Color(0xff38353D)
-                                            : controller.selectedDate.value!
-                                                    .isAtSameMomentAs(day)
-                                                ? Color(0xfffe5524)
-                                                : Color(0xff38353D),
-                                    borderRadius: BorderRadius.circular(32),
+                      return Obx(() {
+                        return InkWell(
+                          onTap: () => controller.selectedDate.value = day,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 8.0),
+                            decoration: BoxDecoration(
+                              color: (controller.selectedDate.value == null)
+                                  ? Color(0xff38353D)
+                                  : controller.selectedDate.value!
+                                          .isAtSameMomentAs(day)
+                                      ? Color(0xfffe5524)
+                                      : Color(0xff38353D),
+                              borderRadius: BorderRadius.circular(32),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    day.shortMonthName,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          day.shortMonthName,
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  (controller.selectedDate.value == null)
+                                      ? Text(
+                                          "${day.day}",
                                           style: TextStyle(
                                             color: Colors.white,
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        (controller.selectedDate.value == null)
-                                            ? Text(
+                                        )
+                                      : (controller.selectedDate.value!
+                                              .isAtSameMomentAs(day))
+                                          ? CircleAvatar(
+                                              radius: 12,
+                                              backgroundColor: Colors.white,
+                                              child: Text(
                                                 "${day.day}",
                                                 style: TextStyle(
-                                                  color: Colors.white,
+                                                  color: Colors.black,
                                                 ),
-                                              )
-                                            : (controller.selectedDate.value!
-                                                    .isAtSameMomentAs(day))
-                                                ? CircleAvatar(
-                                                    radius: 12,
-                                                    backgroundColor:
-                                                        Colors.white,
-                                                    child: Text(
-                                                      "${day.day}",
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                      ),
-                                                    ),
-                                                  )
-                                                : Text(
-                                                    "${day.day}",
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            });
-                          },
-                        ),
-                      ),
-
-                      SizedBox(
-                        height: 16,
-                      ),
-
-                      /// Select Time
-                      SizedBox(
-                        height: 40,
-                        child: ListView.builder(
-                          itemCount: controller.time.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            var data = controller.time[index];
-                            return Obx(() {
-                              return InkWell(
-                                onTap: () =>
-                                    controller.selectedTime.value = data,
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 16, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff38353D),
-                                    borderRadius: BorderRadius.circular(4),
-                                    border:
-                                        (controller.selectedTime.value == null)
-                                            ? null
-                                            : (controller.selectedTime.value!
-                                                    .contains(data))
-                                                ? Border.all(
-                                                    width: 2,
-                                                    color: Color(0xfffe5524),
-                                                  )
-                                                : null,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      data,
-                                      style: TextStyle(
-                                        color: (controller.selectedTime.value ==
-                                                null)
-                                            ? Colors.white
-                                            : (controller.selectedTime.value!
-                                                    .contains(data))
-                                                ? Color(0xfffe5524)
-                                                : Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            });
-                          },
-                        ),
-                      ),
-
-                      SizedBox(
-                        height: 16,
-                      ),
-
-                      /// Total Price and Button Book Ticket
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Total Price',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 4,
-                                ),
-                                Obx(() {
-                                  return Text(
-                                    NumberFormat.currency(
-                                            locale: 'id',
-                                            symbol: 'Rp.',
-                                            decimalDigits: 0)
-                                        .format(controller.totalPrice.value),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16.0,
-                                    ),
-                                  );
-                                }),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 32,
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                debugPrint(
-                                    'selectSeats: ${controller.selectedChairs.toString()}');
-                                debugPrint(
-                                    'selectDate: ${controller.selectedDate.toString()}');
-                                debugPrint(
-                                    'selectTime: ${controller.selectedTime}');
-                                debugPrint(
-                                    'totalPrice: ${controller.totalPrice.value}');
-                                Fluttertoast.showToast(
-                                    backgroundColor: Colors.white,
-                                    textColor: Colors.black,
-                                    msg:
-                                        'selectSeats: ${controller.selectedChairs.toString()}\nselectDate: ${controller.selectedDate.toString()}\nselectTime: ${controller.selectedTime}\ntotalPrice: ${controller.totalPrice.value}');
-                              },
-                              style: ButtonStyle(
-                                padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.symmetric(
-                                      horizontal: 64, vertical: 16),
-                                ),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                  Color(0xfffe5524),
-                                ),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(32),
-                                  ),
-                                ),
-                              ),
-                              child: const Text(
-                                'Book Ticket',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                              ),
+                                            )
+                                          : Text(
+                                              "${day.day}",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
-                      )
-                    ],
+                          ),
+                        );
+                      });
+                    },
                   ),
                 ),
+
+                SizedBox(
+                  height: 16,
+                ),
+
+                /// Select Time
+                SizedBox(
+                  height: 40,
+                  child: ListView.builder(
+                    itemCount: controller.time.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      var data = controller.time[index];
+                      return Obx(() {
+                        return InkWell(
+                          onTap: () => controller.selectedTime.value = data,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Color(0xff38353D),
+                              borderRadius: BorderRadius.circular(4),
+                              border: (controller.selectedTime.value == null)
+                                  ? null
+                                  : (controller.selectedTime.value!
+                                          .contains(data))
+                                      ? Border.all(
+                                          width: 2,
+                                          color: Color(0xfffe5524),
+                                        )
+                                      : null,
+                            ),
+                            child: Center(
+                              child: Text(
+                                data,
+                                style: TextStyle(
+                                  color: (controller.selectedTime.value == null)
+                                      ? Colors.white
+                                      : (controller.selectedTime.value!
+                                              .contains(data))
+                                          ? Color(0xfffe5524)
+                                          : Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+
+//select payment
+                SizedBox(
+                  height: 40,
+                  child: ListView.builder(
+                    itemCount: controller.paymentList.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      var data = controller.paymentList[index];
+                      return Obx(() {
+                        return InkWell(
+                          onTap: () => controller.selectedPayment.value = data,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Color(0xff38353D),
+                              borderRadius: BorderRadius.circular(4),
+                              border: (controller.selectedPayment.value == null)
+                                  ? null
+                                  : (controller.selectedPayment.value!
+                                          .contains(data))
+                                      ? Border.all(
+                                          width: 2,
+                                          color: Color(0xfffe5524),
+                                        )
+                                      : null,
+                            ),
+                            child: Center(
+                              child: Text(
+                                data,
+                                style: TextStyle(
+                                  color:
+                                      (controller.selectedPayment.value == null)
+                                          ? Colors.white
+                                          : (controller.selectedPayment.value!
+                                                  .contains(data))
+                                              ? Color(0xfffe5524)
+                                              : Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                    },
+                  ),
+                ),
+
+                SizedBox(
+                  height: 16,
+                ),
+                Divider(
+                  height: 16.0,
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+
+                /// Total Price and Button Book Ticket
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Total Price',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12.0,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Obx(() {
+                            return Text(
+                              NumberFormat.currency(
+                                      locale: 'id',
+                                      symbol: 'Rp.',
+                                      decimalDigits: 0)
+                                  .format(controller.totalPrice.value),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.0,
+                              ),
+                            );
+                          }),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 32,
+                      ),
+                      ElevatedButton(
+                        onPressed: () => controller.bookTicket(),
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.symmetric(horizontal: 64, vertical: 16),
+                          ),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            Color(0xfffe5524),
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32),
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          'Book Ticket',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),

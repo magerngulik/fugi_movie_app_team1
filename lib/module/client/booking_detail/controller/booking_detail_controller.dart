@@ -1,16 +1,22 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fugi_movie_app/module/client/dashboard/view/dashboard_view.dart';
+import 'package:fugi_movie_app/module/client/movie_detail/controller/movie_detail_controller.dart';
 import 'package:get/get.dart';
 import '../view/booking_detail_view.dart';
 
 class BookingDetailController extends GetxController {
   BookingDetailView? view;
-  List selectedChairs = [].obs;
   List reservedSeats = [];
   List chairList = [];
+
+  List selectedChairs = [].obs;
   Rxn<DateTime> selectedDate = Rxn<DateTime>();
   Rxn<String> selectedTime = Rxn<String>();
+  Rxn<String> selectedPayment = Rxn<String>();
+
   final totalPrice = 0.0.obs;
   final priceTicket = 125000.0;
 
@@ -46,6 +52,7 @@ class BookingDetailController extends GetxController {
 
   List chairs = ['A', 'B', 'C', 'D', 'E'];
   List informationSelectSeats = ['Available', 'Selected', 'Reserved'];
+  List paymentList = ['Debit', 'OVO', 'Gopay', 'Dana'];
 
   List generateListSeat({
     required int seat,
@@ -88,5 +95,31 @@ class BookingDetailController extends GetxController {
 
   changeTotalPrice() {
     totalPrice.value = (selectedChairs.length * priceTicket).toDouble();
+  }
+
+  bookTicket() async {
+    // List selectedChairs = [].obs;
+    // Rxn<DateTime> selectedDate = Rxn<DateTime>();
+    // Rxn<String> selectedTime = Rxn<String>();
+    // Rxn<String> selectedPayment = Rxn<String>();
+
+    MovieDetailController movieDetailController = Get.find();
+    movieDetailController.view!.movie;
+
+    await FirebaseFirestore.instance.collection("orders").add({
+      "created_at": Timestamp.now(),
+      "date": selectedDate.value,
+      "time": selectedTime.value,
+      "payment_method": selectedPayment.value,
+      "chairs": selectedChairs,
+      "movie": {
+        "movie_name": movieDetailController.view!.movie.title,
+        "photo": movieDetailController.view!.movie.posterPath,
+      },
+      "cinema": "Fugi Cinema XXI",
+      "payment_status": "Done",
+    });
+
+    Get.offAll(DashboardView());
   }
 }

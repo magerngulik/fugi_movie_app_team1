@@ -174,7 +174,6 @@ class _logState extends State<LoginFormView> {
                           GoogleSignIn googleSignIn = GoogleSignIn(
                             scopes: [
                               'email',
-                              'https://www.googleapis.com/auth/contacts.readonly',
                             ],
                           );
 
@@ -199,6 +198,7 @@ class _logState extends State<LoginFormView> {
                             debugPrint("userCredential: $userCredential");
                             //TODO: on login success
                             //------------------
+                            Get.offAll(DashboardView());
                           } catch (_) {}
                         },
                       ),
