@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fugi_movie_app/module/client/login/widget/login_form.dart';
+import 'package:fugi_movie_app/module/client/login/widget/login_blur_background.dart';
 import '../controller/login_controller.dart';
 
 import 'package:get/get.dart';
@@ -12,8 +14,11 @@ class LoginView extends StatelessWidget {
         controller.view = this;
 
         return Scaffold(
-          appBar: AppBar(
-            title: Text("Login"),
+          body: Stack(
+            children: const [
+              LoginBlurBackground(),
+              LoginFormView(),
+            ],
           ),
         );
       },

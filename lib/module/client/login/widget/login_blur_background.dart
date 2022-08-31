@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:blur/blur.dart';
+import 'package:flutter/material.dart';
 
 class LoginBlurBackground extends StatelessWidget {
   const LoginBlurBackground({
@@ -19,27 +19,27 @@ class LoginBlurBackground extends StatelessWidget {
             color: Colors.black87,
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: 200,
                   width: MediaQuery.of(context).size.width,
                   child: Image.asset(
-                    'assets/images/img_login_5.jpg',
+                    'assets/image/img_login_5.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 200,
                   width: MediaQuery.of(context).size.width,
                   child: Image.asset(
-                    'assets/images/img_login_3.jpg',
+                    'assets/image/img_login_3.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 290,
                   width: MediaQuery.of(context).size.width,
                   child: Image.asset(
-                    'assets/images/img_login_4.jpg',
+                    'assets/image/img_login_4.jpg',
                     fit: BoxFit.cover,
                     alignment: Alignment.bottomCenter,
                   ),

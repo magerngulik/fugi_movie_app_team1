@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fugi_movie_app/module/client/booking_list/view/booking_list_view.dart';
 import 'package:fugi_movie_app/module/client/dashboard/view/menu_dashboard_view.dart';
-import 'package:fugi_movie_app/module/client/dashboard/view/ticket_view.dart';
 import 'package:fugi_movie_app/module/client/profile/view/profile_view.dart';
 import 'package:get/get.dart';
 import '../../movie_list/view/movie_list_view.dart';
@@ -16,7 +16,7 @@ class DashboardController extends GetxController {
   final allMenuScreens = <Widget>[
     MenuDashboardView(),
     MovieListView(),
-    TicketView(),
+    BookingListView(),
     ProfileView(),
   ];
 
