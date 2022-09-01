@@ -120,7 +120,7 @@ class BookingDetailView extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: Container(
-            height: Get.height * 0.45,
+            height: 310.0,
             padding: EdgeInsets.only(
               top: 16.0,
             ),
@@ -132,28 +132,24 @@ class BookingDetailView extends StatelessWidget {
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const SizedBox(
-                  height: 16.0,
-                ),
-
                 Text(
                   'Select Date and Time',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 12,
                   ),
                 ),
 
                 SizedBox(
-                  height: 24,
+                  height: 12,
                 ),
 
                 /// Select Date
                 SizedBox(
-                  height: 64,
+                  height: 58,
                   child: ListView.builder(
                     itemCount: 30,
                     scrollDirection: Axis.horizontal,
@@ -177,15 +173,18 @@ class BookingDetailView extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     day.shortMonthName,
                                     style: TextStyle(
                                       color: Colors.white,
+                                      fontSize: 11.0,
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 8,
+                                    height: 4,
                                   ),
                                   (controller.selectedDate.value == null)
                                       ? Text(
@@ -228,7 +227,7 @@ class BookingDetailView extends StatelessWidget {
 
                 /// Select Time
                 SizedBox(
-                  height: 40,
+                  height: 28,
                   child: ListView.builder(
                     itemCount: controller.time.length,
                     scrollDirection: Axis.horizontal,
@@ -264,6 +263,7 @@ class BookingDetailView extends StatelessWidget {
                                               .contains(data))
                                           ? Color(0xfffe5524)
                                           : Colors.white,
+                                  fontSize: 11.0,
                                 ),
                               ),
                             ),
@@ -279,7 +279,7 @@ class BookingDetailView extends StatelessWidget {
 
 //select payment
                 SizedBox(
-                  height: 40,
+                  height: 28,
                   child: ListView.builder(
                     itemCount: controller.paymentList.length,
                     scrollDirection: Axis.horizontal,
@@ -316,6 +316,7 @@ class BookingDetailView extends StatelessWidget {
                                                   .contains(data))
                                               ? Color(0xfffe5524)
                                               : Colors.white,
+                                  fontSize: 11.0,
                                 ),
                               ),
                             ),
@@ -403,7 +404,10 @@ class BookingDetailView extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
               ],
             ),
           ),
