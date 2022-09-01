@@ -1,16 +1,41 @@
-# fugi_movie_app
+## Tentang FUGI
+---
+FUGI adalah singkatan dari Flutter User Group Indonesia<br>
+Merupakan komunitas yang sedang berkembang dan aktif di Whatsapp. <br>Dimulai oleh Saiful Bahri dan rekan-rekannya.<br>
 
-A new Flutter project.
+Saat ini FUGI fokus dengan sharing session yang dilakukan hampir tiap minggu.<br>
+Semua orang bisa bergabung karena sharing session ini sifat-nya public.<br><br>
 
-## Getting Started
+## Pobio (Pojok Bioskop)
+---
+Pobio atau Pojok Bioskop adalah aplikasi yang dibangun dengan architecture MVC.<br/>
+State management yang kami gunakan adalah Getx. <br/>
+Sedangkan backend-nya menggunakan Firebase.<br><br>
 
-This project is a starting point for a Flutter application.
+## Contributor (Team 1)
+---
 
-A few resources to get you started if this is your first Flutter project:
+| Nama | Email    | Social Media  |
+| :---   | :--- | :--- |
+| Kresna Bimantara | kresno.bimantoro@gmail.com | [Instagram](https://www.instagram.com/bimbimzzz/) . [Linkedin](https://www.linkedin.com/in/budimanrasyid/)
+| Budiman Rasyid | kresno.bimantoro@gmail.com | [Instagram](https://www.instagram.com/bimbimzzz/) . [Linkedin](https://www.linkedin.com/in/kresno-bimantoro-a97865a4/)
+| M. Zulkarnaen | Zulkarnaim70@gmail.com | [Instagram](https://www.instagram.com/zulkarnaimz/) . [Linkedin](http://www.linkedin.com/in/zulkarnaen137)
+| Syamsul Ma'arif | msyamsul725@gmail.com | [Instagram](https://www.instagram.com/msyamsul725/) . [Linkedin](https://www.linkedin.com/in/syamsul-maarif-a7475422a/)
+| Muhammad Arif | - | - 
+| Deny Ocr | - | [Youtube](https://www.youtube.com/c/CapekNgoding)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Koordinator Event
+| Nama | Email    | Social Media  |
+| :---   | :--- | :--- |
+| Saiful Bahri | - | [Youtube](https://www.youtube.com/c/SaifulBahri27) 
+| Fatih | - | - 
+<br><br>
+
+---
+### How to Run
+
+### Screenshot
+
+### Demo Video
+
