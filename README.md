@@ -45,6 +45,13 @@ Sedangkan backend-nya menggunakan Firebase.<br>
 
 ---
 ### How to Run
+- Jalankan perintah ini
+```
+flutter pub get --verbose
+```
+
+- Tekan F5 di VsCode
+
 
 ### Screenshot
 
