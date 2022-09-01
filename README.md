@@ -56,6 +56,7 @@ flutter pub get --verbose
 
 
 ### Screenshot
+![alt text](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/1.png)
 <br/>
 
 ### Demo Video
