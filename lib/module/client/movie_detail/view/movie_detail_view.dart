@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:fugi_movie_app/model/movie_model.dart';
 import 'package:fugi_movie_app/module/client/dashboard/view/dashboard_view.dart';
 import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
+import 'package:fugi_movie_app/module/client/movie_video_player/controller/movie_video_player_controller.dart';
 import 'package:fugi_movie_app/module/client/movie_video_player/view/movie_video_player_view.dart';
 import '../../booking_detail/view/booking_detail_view.dart';
 import '../controller/movie_detail_controller.dart';
@@ -125,6 +126,7 @@ class MovieDetailView extends StatelessWidget {
                                   await Get.to(LoginView());
                                   return;
                                 }
+                                await Get.delete<MovieVideoPlayerController>();
                                 await Get.to(MovieVideoPlayerView());
                                 await SystemChrome.setPreferredOrientations([
                                   DeviceOrientation.portraitUp,

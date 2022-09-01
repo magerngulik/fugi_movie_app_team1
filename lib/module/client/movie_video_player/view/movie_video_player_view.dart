@@ -1,108 +1,95 @@
 import 'package:flutter/material.dart';
-import '../controller/movie_video_player_controller.dart';
+import 'package:fugi_movie_app/module/client/movie_video_player/controller/movie_video_player_controller.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:flutter_screen_wake/flutter_screen_wake.dart';
 
-class MovieVideoPlayerView extends StatefulWidget {
-  @override
-  State<MovieVideoPlayerView> createState() => _MovieVideoPlayerViewState();
-}
-
-class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
+class MovieVideoPlayerView extends StatelessWidget {
 //controller bawaan video player
-  VideoPlayerController? _controller;
+  // VideoPlayerController? controller.videoPlayerController;
   // List videoList = ['butterfly.mp4', 'bee.mp4'];
-  int index = 0;
+  // int index = 0;
 
-  final String asset =
-      "https://github.com/denyocrworld/test_upload_video/raw/main/video.mp4";
+  // final String asset =
+  //     "https://github.com/denyocrworld/test_upload_video/raw/main/video.mp4";
 
-  @override
-  void initState() {
-    super.initState();
-    //rotasi portait di matikan
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
-    _controller = VideoPlayerController.network(asset)
-      ..addListener(() {
-        setState(() {});
-      })
-      ..setLooping(true)
-      ..initialize().then((_) {
-        setState(() {});
-      });
-    _controller!.play();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   //rotasi portait di matikan
+  //   SystemChrome.setPreferredOrientations([
+  //     DeviceOrientation.landscapeLeft,
+  //     DeviceOrientation.landscapeRight,
+  //   ]);
+  //   controller.videoPlayerController = VideoPlayerController.network(asset)
+  //     ..addListener(() {
+  //       setState(() {});
+  //     })
+  //     ..setLooping(true)
+  //     ..initialize().then((_) {
+  //       controller.videoPlayerController!.play();
+  //       setState(() {});
+  //     });
+  // }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    _controller!.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   controller.videoPlayerController!.dispose();
+  //   super.dispose();
+  // }
 
-  //untuk mengatur disply dari grub button
-  bool display = false;
-  //untuk mengatur icon lock
-  bool lock = true;
-  double _brightness = 0;
-  bool toggle = false;
+  // bool display = false;
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MovieVideoPlayerController>(
       init: MovieVideoPlayerController(),
       builder: (controller) {
-        controller.view = widget;
+        controller.view = this;
 
         return Scaffold(
           body: SafeArea(
-            child: Container(
+            child: SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-              ),
+              // decoration: BoxDecoration(
+              //   color: Colors.grey,
+              // ),
               child: Stack(
                 children: [
                   InkWell(
                     onTap: () {
                       //untuk memunculkan grub button
-                      setState(() {
-                        display = !display;
-                      });
+                      controller.display = !controller.display;
+                      controller.update();
                     },
-                    child: Container(
-                      color: Colors.grey,
+                    child: SizedBox(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                       //inisialisasi value dari controller
-                      child: _controller!.value.isInitialized
-                          ? AspectRatio(
-                              //mengatur aspek ratio dari video yang akan di puter
-                              aspectRatio: 16 / 9,
-                              child: VideoPlayer(_controller!),
-                            )
-                          : Container(
-                              //yang tampil kalau video masih di load
-                              child: Center(
-                                child: Text(
-                                  "Loading Video",
-                                  style: TextStyle(
-                                    fontSize: 50,
+                      child:
+                          controller.videoPlayerController!.value.isInitialized
+                              ? AspectRatio(
+                                  //mengatur aspek ratio dari video yang akan di puter
+                                  aspectRatio: 16 / 9,
+                                  child: VideoPlayer(
+                                      controller.videoPlayerController!),
+                                )
+                              : Container(
+                                  //yang tampil kalau video masih di load
+                                  color: Colors.black,
+                                  child: Center(
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
                     ),
                   ),
-                  display
+                  controller.display
                       ? Container(
                           height: MediaQuery.of(context).size.height,
                           width: MediaQuery.of(context).size.width,
@@ -143,9 +130,9 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                       child: IconButton(
                                           onPressed: () {
                                             //untuk menyembunyikan grub button
-                                            setState(() {
-                                              display = !display;
-                                            });
+                                            controller.display =
+                                                !controller.display;
+                                            controller.update();
                                           },
                                           icon: Icon(
                                             Icons.close,
@@ -176,14 +163,17 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                             children: [
                                               Expanded(
                                                 child: SfSlider.vertical(
-                                                    value: _brightness,
+                                                    value:
+                                                        controller.brightness,
                                                     onChanged: (value) {
-                                                      setState(() {
-                                                        _brightness = value;
-                                                        FlutterScreenWake
-                                                            .setBrightness(
-                                                                _brightness);
-                                                      });
+                                                      controller.brightness =
+                                                          value;
+
+                                                      FlutterScreenWake
+                                                          .setBrightness(
+                                                              controller
+                                                                  .brightness);
+                                                      controller.update();
                                                     }),
                                               ),
                                               SizedBox(
@@ -206,14 +196,19 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                       Expanded(
                                           child: IconButton(
                                         onPressed: () {
-                                          setState(() {
-                                            //variable bawaan controller untuk memulai dan memberhentikan video
-                                            _controller!.value.isPlaying
-                                                ? _controller!.pause()
-                                                : _controller!.play();
-                                          });
+                                          controller.videoPlayerController!
+                                                  .value.isPlaying
+                                              ? controller
+                                                  .videoPlayerController!
+                                                  .pause()
+                                              : controller
+                                                  .videoPlayerController!
+                                                  .play();
                                         },
-                                        icon: Icon(_controller!.value.isPlaying
+                                        icon: Icon(controller
+                                                .videoPlayerController!
+                                                .value
+                                                .isPlaying
                                             ? Icons.pause
                                             : Icons.play_arrow),
                                         iconSize: 120,
@@ -221,11 +216,15 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                       Expanded(
                                         child: IconButton(
                                             onPressed: () async {
-                                              await _controller!
+                                              await controller
+                                                  .videoPlayerController!
                                                   .seekTo(Duration(seconds: 4));
-                                              await _controller!.play();
-                                              display = !display;
-                                              setState(() {});
+                                              await controller
+                                                  .videoPlayerController!
+                                                  .play();
+                                              controller.display =
+                                                  !controller.display;
+                                              controller.update();
                                             },
                                             icon: FaIcon(FontAwesomeIcons
                                                 .arrowRotateRight),
@@ -263,16 +262,15 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                     InkWell(
                                       onTap: () {
                                         //menganti logo lock
-                                        setState(() {
-                                          lock = !lock;
-                                        });
+                                        controller.lock = !controller.lock;
+                                        controller.update();
                                       },
                                       child: SizedBox(
                                         width: 150,
                                         child: Row(
                                           children: [
                                             Icon(
-                                              lock
+                                              controller.lock
                                                   ? Icons.lock_open
                                                   : Icons.lock,
                                               color: Colors.white,
@@ -323,10 +321,9 @@ class _MovieVideoPlayerViewState extends State<MovieVideoPlayerView> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        if (index <= 1) {
-                                          setState(() {
-                                            index += 1;
-                                          });
+                                        if (controller.index <= 1) {
+                                          controller.index += 1;
+                                          controller.update();
                                         }
                                       },
                                       child: SizedBox(
