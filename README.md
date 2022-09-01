@@ -64,10 +64,7 @@ flutter pub get --verbose
 <br/>
 
 ### Demo Video
-[![Watch the video](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/1.png)](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/movie.mp4)
-
-[<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/movie.mp4 "Now in Android: 55")
-
+[Download](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/movie.mp4)
 <br/>
 
 
