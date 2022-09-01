@@ -148,7 +148,7 @@ class ProfileView extends StatelessWidget {
                                   child: Column(
                                     children: const [
                                       Icon(
-                                        MdiIcons.movieCheck,
+                                        MdiIcons.movieOutline,
                                         color: Colors.blueGrey,
                                       ),
                                       Text(
@@ -172,7 +172,7 @@ class ProfileView extends StatelessWidget {
                                   child: Column(
                                     children: const [
                                       Icon(
-                                        MdiIcons.clock,
+                                        MdiIcons.clockOutline,
                                         color: Colors.blueGrey,
                                       ),
                                       Text(
@@ -197,7 +197,7 @@ class ProfileView extends StatelessWidget {
                                   child: Column(
                                     children: const [
                                       Icon(
-                                        Icons.post_add,
+                                        MdiIcons.messageFlashOutline,
                                         color: Colors.blueGrey,
                                       ),
                                       Text(
@@ -209,7 +209,7 @@ class ProfileView extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        "Posts",
+                                        "Reviews",
                                         style: TextStyle(
                                           fontSize: 10.0,
                                           color: Colors.blueGrey,
