@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fugi_movie_app/module/client/dashboard/view/dashboard_view.dart';
 import 'package:fugi_movie_app/module/client/login/view/login_view.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../controller/profile_controller.dart';
 
 import 'package:get/get.dart';
@@ -147,7 +148,7 @@ class ProfileView extends StatelessWidget {
                                   child: Column(
                                     children: const [
                                       Icon(
-                                        Icons.people_alt_outlined,
+                                        MdiIcons.movieCheck,
                                         color: Colors.blueGrey,
                                       ),
                                       Text(
@@ -171,11 +172,11 @@ class ProfileView extends StatelessWidget {
                                   child: Column(
                                     children: const [
                                       Icon(
-                                        Icons.people_alt_outlined,
+                                        MdiIcons.clock,
                                         color: Colors.blueGrey,
                                       ),
                                       Text(
-                                        "2K",
+                                        "25K",
                                         style: TextStyle(
                                           fontSize: 20.0,
                                           fontWeight: FontWeight.bold,
@@ -183,7 +184,7 @@ class ProfileView extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        "Following",
+                                        "Watchtime (Hours)",
                                         style: TextStyle(
                                           fontSize: 10.0,
                                           color: Colors.blueGrey,
