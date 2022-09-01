@@ -33,7 +33,7 @@ Sedangkan backend-nya menggunakan Firebase.<br>
 | M. Zulkarnaen | Zulkarnaim70@gmail.com | [Instagram](https://www.instagram.com/zulkarnaimz/) . [Linkedin](http://www.linkedin.com/in/zulkarnaen137) . [GitHub](https://github.com/magerngulik) | Hacker
 | Syamsul Ma'arif | msyamsul725@gmail.com | [Instagram](https://www.instagram.com/msyamsul725/) . [Linkedin](https://www.linkedin.com/in/syamsul-maarif-a7475422a/) . [GitHub](https://github.com/Msyamsul7251) | Hacker
 | Muhammad Arif | - | - | Hacker
-| Deny Ocr | - | [Youtube](https://www.youtube.com/c/CapekNgoding) | Mentor
+| Deny Ocr | - | [Youtube](https://www.youtube.com/c/CapekNgoding) . [GitHub](https://github.com/denyocrworld) | Mentor
 
 
 ## Koordinator Event
