@@ -32,12 +32,25 @@ class BookingListView extends StatelessWidget {
             title: Text("Your Ticket"),
             centerTitle: true,
             actions: [
-              Padding(
-                padding: EdgeInsets.only(right: 10),
-                child: Icon(
-                  Icons.tune,
-                  color: Colors.grey[600]!,
-                  size: 35,
+              InkWell(
+                onTap: () async {
+                  var snapsnot = await FirebaseFirestore.instance
+                      .collection("orders")
+                      .get();
+                  for (var doc in snapsnot.docs) {
+                    FirebaseFirestore.instance
+                        .collection("orders")
+                        .doc(doc.id)
+                        .delete();
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(right: 10),
+                  child: Icon(
+                    Icons.tune,
+                    color: Colors.grey[600]!,
+                    size: 35,
+                  ),
                 ),
               ),
             ],
@@ -65,8 +78,8 @@ class BookingListView extends StatelessWidget {
                           var item = (data.docs[index].data() as Map);
                           item["id"] = data.docs[index].id;
 
-                          var date = DateFormat("EEEE, d MMM y")
-                              .format(item["date"].toDate());
+                          var date = DateFormat("EEEE, d MMM y").format(
+                              (item["date"] ?? Timestamp.now()).toDate());
 
                           return Column(
                             children: [
