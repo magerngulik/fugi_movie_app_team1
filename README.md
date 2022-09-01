@@ -12,17 +12,27 @@ Pobio atau Pojok Bioskop adalah aplikasi yang dibangun dengan architecture MVC.<
 State management yang kami gunakan adalah Getx. <br/>
 Sedangkan backend-nya menggunakan Firebase.<br><br>
 
+## Fitur Pobio
+- Login by Email and Password
+- Login by Google
+- Video Player
+- Booking Tiket
+- Select Chairs, Date, Time and Payment Method
+- Movie Search
+- Movie Dashboard
+- Movie Detail
+
 ## Contributor (Team 1)
 ---
 
-| Nama | Email    | Social Media  |
-| :---   | :--- | :--- |
-| Kresna Bimantara | kresno.bimantoro@gmail.com | [Instagram](https://www.instagram.com/bimbimzzz/) . [Linkedin](https://www.linkedin.com/in/budimanrasyid/)
-| Budiman Rasyid | kresno.bimantoro@gmail.com | [Instagram](https://www.instagram.com/bimbimzzz/) . [Linkedin](https://www.linkedin.com/in/kresno-bimantoro-a97865a4/)
-| M. Zulkarnaen | Zulkarnaim70@gmail.com | [Instagram](https://www.instagram.com/zulkarnaimz/) . [Linkedin](http://www.linkedin.com/in/zulkarnaen137)
-| Syamsul Ma'arif | msyamsul725@gmail.com | [Instagram](https://www.instagram.com/msyamsul725/) . [Linkedin](https://www.linkedin.com/in/syamsul-maarif-a7475422a/)
-| Muhammad Arif | - | - 
-| Deny Ocr | - | [Youtube](https://www.youtube.com/c/CapekNgoding)
+| Nama | Email    | Social Media  | Sebagai  |
+| :---   | :--- | :--- | :--- |
+| Kresna Bimantara | kresno.bimantoro@gmail.com | [Instagram](https://www.instagram.com/bimbimzzz/) . [Linkedin](https://www.linkedin.com/in/budimanrasyid/) | Hacker
+| Budiman Rasyid | kresno.bimantoro@gmail.com | [Instagram](https://www.instagram.com/bimbimzzz/) . [Linkedin](https://www.linkedin.com/in/kresno-bimantoro-a97865a4/)| Hacker
+| M. Zulkarnaen | Zulkarnaim70@gmail.com | [Instagram](https://www.instagram.com/zulkarnaimz/) . [Linkedin](http://www.linkedin.com/in/zulkarnaen137)| Hacker
+| Syamsul Ma'arif | msyamsul725@gmail.com | [Instagram](https://www.instagram.com/msyamsul725/) . [Linkedin](https://www.linkedin.com/in/syamsul-maarif-a7475422a/)| Hacker
+| Muhammad Arif | - | - | Hacker
+| Deny Ocr | - | [Youtube](https://www.youtube.com/c/CapekNgoding) | Mentor
 
 
 ## Koordinator Event
