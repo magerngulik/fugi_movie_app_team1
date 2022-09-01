@@ -28,7 +28,7 @@ Sedangkan backend-nya menggunakan Firebase.<br>
 
 | Nama | Email    | Social Media  | Sebagai  |
 | :---   | :--- | :--- | :--- |
-| Kresna Bimantara | kresno.bimantoro@gmail.com | [Instagram](https://www.instagram.com/bimbimzzz/) . [Linkedin](https://www.linkedin.com/in/budimanrasyid/) | Hacker
+| Kresna Bimantara | brasyid15@gmail.com | [Instagram](https://www.instagram.com/rsyd29/) . [Linkedin](https://www.linkedin.com/in/budimanrasyid/) | Hacker
 | Budiman Rasyid | kresno.bimantoro@gmail.com | [Instagram](https://www.instagram.com/bimbimzzz/) . [Linkedin](https://www.linkedin.com/in/kresno-bimantoro-a97865a4/)| Hacker
 | M. Zulkarnaen | Zulkarnaim70@gmail.com | [Instagram](https://www.instagram.com/zulkarnaimz/) . [Linkedin](http://www.linkedin.com/in/zulkarnaen137)| Hacker
 | Syamsul Ma'arif | msyamsul725@gmail.com | [Instagram](https://www.instagram.com/msyamsul725/) . [Linkedin](https://www.linkedin.com/in/syamsul-maarif-a7475422a/)| Hacker
@@ -40,7 +40,7 @@ Sedangkan backend-nya menggunakan Firebase.<br>
 | Nama | Email    | Social Media  |
 | :---   | :--- | :--- |
 | Saiful Bahri | - | [Youtube](https://www.youtube.com/c/SaifulBahri27) . [Medium](https://medium.com/@bahri) . [Tiktok](https://www.tiktok.com/@codewithbahri) . [Facebook](https://www.facebook.com/bahrieBHE) |
-| Fatih | - | - |
+| Fatih | - | Facebook |
 <br><br>
 
 ---
