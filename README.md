@@ -12,6 +12,8 @@ Pobio atau Pojok Bioskop adalah aplikasi yang dibangun dengan architecture MVC.<
 State management yang kami gunakan adalah Getx. <br/>
 Sedangkan backend-nya menggunakan Firebase.<br><br>
 
+`Hanya dengan spasi keinginan pun terealisasi (-- Pobio)`
+
 ## Fitur Pobio
 - Login by Email and Password
 - Login by Google
