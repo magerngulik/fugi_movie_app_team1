@@ -10,8 +10,7 @@ Semua orang bisa bergabung karena sharing session ini sifat-nya public.<br><br>
 ---
 Pobio atau Pojok Bioskop adalah aplikasi yang dibangun dengan architecture MVC.<br/>
 State management yang kami gunakan adalah Getx. <br/>
-Sedangkan backend-nya menggunakan Firebase.<br><br>
-
+Sedangkan backend-nya menggunakan Firebase.<br>
 `Hanya dengan spasi keinginan pun terealisasi (-- Pobio)`
 
 ## Fitur Pobio
