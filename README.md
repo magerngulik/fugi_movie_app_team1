@@ -40,7 +40,7 @@ Sedangkan backend-nya menggunakan Firebase.<br>
 | Nama | Email    | Social Media  |
 | :---   | :--- | :--- |
 | Saiful Bahri | - | [Youtube](https://www.youtube.com/c/SaifulBahri27) . [Medium](https://medium.com/@bahri) . [Tiktok](https://www.tiktok.com/@codewithbahri) . [Facebook](https://www.facebook.com/bahrieBHE) |
-| Fatih | - | Facebook |
+| Fatih | fatiharahmat257@gmail.com | [Linkedin](https://www.linkedin.com/in/fatiha-rahmat) |
 <br><br>
 
 ---
