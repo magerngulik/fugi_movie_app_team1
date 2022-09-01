@@ -39,7 +39,7 @@ Sedangkan backend-nya menggunakan Firebase.<br>
 ## Koordinator Event
 | Nama | Email    | Social Media  |
 | :---   | :--- | :--- |
-| Saiful Bahri | - | [Youtube](https://www.youtube.com/c/SaifulBahri27) 
+| Saiful Bahri | - | [Youtube](https://www.youtube.com/c/SaifulBahri27) . [Medium](https://medium.com/@bahri) . [Tiktok](https://www.tiktok.com/@codewithbahri) |
 | Fatih | - | - 
 <br><br>
 
