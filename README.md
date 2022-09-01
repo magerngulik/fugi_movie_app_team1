@@ -37,10 +37,11 @@ Sedangkan backend-nya menggunakan Firebase.<br>
 
 
 ## Koordinator Event
-| Nama | Email    | Social Media  |
+| Nama | Email | Social Media  |
 | :---   | :--- | :--- |
 | Saiful Bahri | - | [Youtube](https://www.youtube.com/c/SaifulBahri27) . [Medium](https://medium.com/@bahri) . [Tiktok](https://www.tiktok.com/@codewithbahri) . [Facebook](https://www.facebook.com/bahrieBHE) |
 | Fatih | fatiharahmat257@gmail.com | [Linkedin](https://www.linkedin.com/in/fatiha-rahmat) . [Twitter](https://twitter.com/sirahmatf) |
+
 <br><br>
 
 ---
